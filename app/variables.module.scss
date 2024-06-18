@@ -1,0 +1,24 @@
+$regular-text-color: #213f7d;
+$btn-color: #39cdcc;
+$text-avenir: "Avenir Next", sans-serif;
+$text-work-sans: "Work Sans", sans-serif;
+$dark-text-color: #545f7d;
+$bg-color: #fbfbfb;
+$border-red: #e4033b;
+
+#body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $regular-text-color;
+}
+
+.title {
+  color: $regular-text-color;
+  font-family: $text-work-sans;
+}
+
+.name {
+  font-family: $text-avenir;
+  font-weight: bolder;
+}
