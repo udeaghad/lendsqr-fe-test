@@ -10,7 +10,7 @@ const LoginHero = () => {
         </div>
         <div className={styles.container}>
           <div className={styles.login_photo}>
-            <div className={styles.photo} />
+            <div className={styles.photo} data-testid="hero_photo" />
           </div>
         </div>
       </div>

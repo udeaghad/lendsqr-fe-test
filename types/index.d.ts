@@ -3,4 +3,10 @@ declare type LoginData = {
   password: string;
 };
 
-export type { LoginData };
+declare interface LoginFormProps {
+  isPasswordVisible: boolean;
+  onSubmit: (data: LoginData) => void;
+  togglePasswordVisibility: () => void;
+}
+
+export type { LoginData, LoginFormProps };
