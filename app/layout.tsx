@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
-import "./variables.module.scss";
+import styles from "./variables.module.scss";
 
 const workSans = Work_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lendsqr",
   description: "Empowering the smartest lenders",
-  icons: '/assets/logo1.png',
+  icons: "/assets/logo1.png",
 };
 
 export default function RootLayout({
@@ -17,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.className} id="body">
-        {children}
-      </body>
+      <body className={styles.body}>{children}</body>
     </html>
   );
 }

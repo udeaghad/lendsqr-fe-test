@@ -6,19 +6,53 @@ $dark-text-color: #545f7d;
 $bg-color: #fbfbfb;
 $border-red: #e4033b;
 
-#body {
+// import mixins
+@import "mixins";
+
+.body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: $regular-text-color;
 }
 
-.title {
-  color: $regular-text-color;
-  font-family: $text-work-sans;
+.login_container {
+  padding: 20px;
+  @include flex-col;
 }
 
-.name {
-  font-family: $text-avenir;
-  font-weight: bolder;
+.login_page_img_cont {
+  @include media(tablet) {
+    flex: 1;
+  }
+}
+.login_logo {
+  width: 100%;
+  object-fit: contain;
+}
+.login_photo {
+  @include flex-col-center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  object-fit: cover;
+}
+.photo {
+  background-image: url("../public/assets/lendsqr-login-pix.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 300px;
+  height: 100px;  
+}
+.logo {
+  background-image: url("../public/assets/lendsqr-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 24px;
+}
+
+.login_details_cont {
+  flex: 4;
+  border: 2px solid red;
 }
