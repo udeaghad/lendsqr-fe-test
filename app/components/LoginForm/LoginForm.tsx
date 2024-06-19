@@ -85,6 +85,9 @@ const LoginForm = () => {
               <span>{errors.password?.message}</span>
             )}
           </div>
+          <div className={styles.forget_password}>
+            <span>FORGOT PASSWORD?</span>
+          </div>
           <div className={styles.form_group}>
             <button type="submit" className={styles.submit_button}>
               Login

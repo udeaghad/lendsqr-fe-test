@@ -16,20 +16,30 @@
 }
 
 .welcome_msg {
-  @include flex-col-center;
+  @include flex-col;
   font-family: $text-avenir;
   font-size: 24px;
   color: $regular-text-color;
   font-weight: 700;
+  @include media(desktop) {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
   span {
     font-size: 10px;
     font-weight: normal;
+    @include media(desktop) {
+      font-size: 16px;
+    }
   }
 }
 
 .form_group {
   margin-top: 20px;
   width: 100%;
+  @include media(desktop) {
+    // margin-top: 36px;
+  }
   @include flex-col;
   .submit_button {
     width: 100%;
@@ -48,6 +58,10 @@
     &:hover {
       background-color: darken($color: $btn-color, $amount: 5%);
     }
+    @include media(desktop) {
+      height: 42px;
+      font-size: 20px;
+    }
   }
   span {
     font-family: $text-work-sans;
@@ -63,6 +77,9 @@
   height: 32px;
   @include flex-row;
   justify-content: space-between;
+  @include media(desktop) {
+    height: 42px;
+  }
 
   .email_input {
     border: none;
@@ -74,6 +91,9 @@
     color: $dark-text-color;
     &:focus {
       outline: none;
+    }
+    @include media(desktop) {
+      font-size: 20px;
     }
   }
 
@@ -87,6 +107,9 @@
     color: $dark-text-color;
     &:focus {
       outline: none;
+    }
+    @include media(desktop) {
+      font-size: 20px;
     }
   }
 
@@ -104,5 +127,26 @@
       outline: none;
       background-color: inherit;
     }
+  }
+  @include media(desktop) {
+    font-size: 16px;
+  }
+}
+
+.forget_password {
+  font-family: $text-avenir;
+  font-size: 10px;
+  color: $btn-color;
+  margin-top: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  &:hover {
+    color: $btn-color;
+  }
+  @include media(desktop) {
+    font-size: 12px;
+  }
+  span {
+    text-transform: capitalize;
   }
 }
