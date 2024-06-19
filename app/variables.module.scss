@@ -6,16 +6,6 @@ $dark-text-color: #545f7d;
 $bg-color: #fbfbfb;
 $border-red: #e4033b;
 
-// :export {
-//   regularTextColor: $regular-text-color;
-//   btnColor: $btn-color;
-//   textAvenir: $text-avenir;
-//   textWorkSans: $text-work-sans;
-//   darkTextColor: $dark-text-color;
-//   bgColor: $bg-color;
-//   borderRed: $border-red;
-// }
-
 // import mixins
 @import "mixins";
 
@@ -24,9 +14,4 @@ $border-red: #e4033b;
   padding: 0;
   box-sizing: border-box;
   color: $regular-text-color;
-}
-
-.login_details_cont {
-  flex: 4;
-  border: 2px solid red;
 }

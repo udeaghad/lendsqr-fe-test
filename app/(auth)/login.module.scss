@@ -1,0 +1,17 @@
+@import "../variables.module.scss";
+@import "../mixins";
+
+.page_container {
+  @include media(desktop) {
+    padding: 50px;
+    width: 90%;
+    height: 85vh;
+    @include flex-row-center;
+    .hero_container {
+      flex: 1;
+    }
+    .form_container {
+      flex: 1;
+    }
+  }
+}

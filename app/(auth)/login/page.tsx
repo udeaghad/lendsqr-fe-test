@@ -1,16 +1,16 @@
 import React from "react";
-// import styles from "./../../variables.module.scss";
+import styles from "../login.module.scss";
 import LoginHero from "../../components/LoginHero/LoginHero";
 import LoginForm from "../../components/LoginForm/LoginForm";
 
 const Login = () => {
 
   return (
-    <div>
-      <section>
+    <div className={styles.page_container}>
+      <section className={styles.hero_container}>
         <LoginHero />
       </section>
-      <section>
+      <section className={styles.hero_container}>
         <LoginForm />
       </section>
     </div>

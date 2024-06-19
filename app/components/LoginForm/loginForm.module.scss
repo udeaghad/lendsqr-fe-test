@@ -1,9 +1,18 @@
 @import "../../variables.module.scss";
 @import "../../mixins";
 
+.main_container {
+  width: 100%;
+  @include flex-col-center;
+}
+
 .container {
   padding: 0 20px;
   @include flex-col;
+  width: 80%;
+  @include media(tablet) {
+    width: 50%;
+  }
 }
 
 .welcome_msg {
