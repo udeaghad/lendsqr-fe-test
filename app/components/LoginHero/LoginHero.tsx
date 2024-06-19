@@ -6,7 +6,7 @@ const LoginHero = () => {
     <div className={styles.login_container}>
       <div className={styles.login_page_img_cont}>
         <div className={styles.login_logo}>
-          <div className={styles.logo} />
+          <div className={styles.logo} data-testid="logo" />
         </div>
         <div className={styles.container}>
           <div className={styles.login_photo}>
