@@ -17,9 +17,6 @@
   position: fixed;
   z-index: 10;
   background-color: white;
-  @include media(desktop) {
-    padding: 20px;
-  }
 }
 
 .logo {
@@ -169,6 +166,37 @@
   font-family: $text-work-sans;
   color: $dark-text-color;
   text-decoration: none;
+  @include media(desktop) {
+    font-size: 16px;
+    gap: 10px;
+    margin-top: 10px;
+    height: 40px;
+    width: 200px;
+    padding: 0 24px;
+    &:hover {
+      background-color: lighten($color: $btn-color, $amount: 45);
+    };
+  }
+}
+
+.navItem_active {
+  @include flex-row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: $text-work-sans;
+  color: $dark-text-color;
+  text-decoration: none;
+  background-color: lighten($color: $btn-color, $amount: 45);
+  @include media(desktop) {
+    font-size: 16px;
+    gap: 10px;
+    margin-top: 10px;
+    height: 40px;
+    width: 200px;
+    padding: 0 24px;
+  }
 }
 
 .navItem_switch {
@@ -180,6 +208,19 @@
   font-family: $text-work-sans;
   color: $dark-text-color;
   text-decoration: none;
+
+  @include media(desktop) {
+    font-size: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    width: 200px;
+    padding: 0 24px;
+    &:hover {
+      background-color: lighten($color: $btn-color, $amount: 45);
+    };
+  }
 }
 
 .icon_container {
@@ -251,4 +292,35 @@
     border-radius: 0 8px 8px 0;
     background-color: $btn-color;
   }
+}
+
+.sidebar {
+  display: none;
+  @include media(desktop) {
+    display: block;
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    position: static;
+    top: 85px;
+    z-index: 10;
+    padding: 30px 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $dark-text-color;
+  font-size: 14px;
+}
+
+.dashboardItems {
+  color: $dark-text-color;
+  font-size: 14px;
+  font-family: $text-work-sans;
+  font-weight: 600;
+  margin-left: 20px;
+  margin-top: 10px;
 }

@@ -20,6 +20,11 @@
   align-items: center;
 }
 
+@mixin links {
+  text-decoration: none;
+  color: $dark-text-color;
+}
+
 // media query mixin
 @mixin media($breakpoint) {
   @if $breakpoint == phone {
