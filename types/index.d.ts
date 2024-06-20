@@ -9,4 +9,26 @@ declare interface LoginFormProps {
   togglePasswordVisibility: () => void;
 }
 
-export type { LoginData, LoginFormProps };
+// declare type NavDashboardItemProps = {
+//   dashboardItems: {
+//     title: string;
+//     subtitles: NavDashboardItemSubtitleProps[];
+//   }[];
+// };
+
+// declare interface NavDashboardItemSubtitleProps {
+//   name: string;
+//   icons: string;
+//   url: string;
+// }
+
+interface SideBarProps {
+  isCollapsed: boolean;
+}
+
+interface TopBarProps {
+  isCollapsed: boolean;
+  setIsCollapsed: (isCollapsed: boolean) => void;
+}
+
+export type { LoginData, LoginFormProps, SideBarProps, TopBarProps };
