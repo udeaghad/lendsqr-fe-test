@@ -26,20 +26,22 @@ const TopBar = ({ isCollapsed, setIsCollapsed }: TopBarProps) => {
             <IoMdClose size={20} />
           </div>
         )}
-
-        <div className={styles.logo_container}>
-          <div className={styles.logo} />
-        </div>
-        <div className={styles.search_container}>
-          <input
-            type="text"
-            placeholder="Search for anything"
-            className={styles.search_input}
-          />
-          <div className={styles.search_icon}>
-            <IoSearchOutline color="white" size={24}/>
+        <div className={styles.logo_search_cont}>
+          <div className={styles.logo_container}>
+            <div className={styles.logo} />
+          </div>
+          <div className={styles.search_container}>
+            <input
+              type="text"
+              placeholder="Search for anything"
+              className={styles.search_input}
+            />
+            <div className={styles.search_icon}>
+              <IoSearchOutline color="white" size={24} />
+            </div>
           </div>
         </div>
+
         <div className={styles.nav_items}>
           <div className={styles.docs_container}>
             <div>Docs</div>

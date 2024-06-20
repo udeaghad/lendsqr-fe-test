@@ -17,6 +17,9 @@
   position: fixed;
   z-index: 10;
   background-color: white;
+  @include media(desktop) {
+    padding: 20px;
+  }
 }
 
 .logo {
@@ -26,18 +29,28 @@
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+  @include media(desktop) {
+    width: 150px;
+    height: 30px;
+  }
 }
 
 .hamburger {
   width: fit-content;
   margin: 0 5px;
   cursor: pointer;
+  @include media(desktop) {
+    display: none;
+  }
 }
 
 .logo_container {
   width: fit-content;
   margin: 0 5px;
   cursor: pointer;
+  @include media(desktop) {
+    margin-left: 32px;
+  }
 }
 
 .docs_container {
@@ -65,18 +78,17 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-}
-
-.name_container {
-  display: none;
-  @include media(tablet) {
-    display: block;
+  @include media(desktop) {
+    width: 48px;
+    height: 48px;
   }
 }
 
 .nav_items {
+  flex: 1;
   @include flex-row-center;
   gap: 10px;
+
   .user_profile {
     @include flex-row-center;
     cursor: pointer;
@@ -84,7 +96,37 @@
     font-family: $text-work-sans;
     font-size: 12px;
     font-weight: 600;
+    @include media(desktop) {
+      margin-right: 30px;
+      gap: 10px;
+    }
   }
+  .name_container {
+    display: none;
+    @include media(tablet) {
+      display: block;
+    }
+    @include media(desktop) {
+      display: block;
+      font-size: 14px;
+    }
+  }
+
+  @include media(tablet) {
+    justify-content: flex-end;
+    gap: 50px;
+  }
+
+  @include media(desktop) {
+    justify-content: flex-end;
+    gap: 50px;
+  }
+}
+.logo_search_cont {
+  flex: 1;
+  @include flex-row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .menu_container {
@@ -158,6 +200,32 @@
 .search_container {
   display: none;
   @include media(tablet) {
+    @include flex-row;
+    width: 300px;
+    height: 30px;
+    border: 1px solid $dark-text-color;
+    border-radius: 8px;
+    padding-left: 10px;
+  }
+  .search_input {
+    width: 250px;
+    height: auto;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    // margin-right: 5px;
+    font-size: 14px;
+  }
+  .search_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    border: 1px solid transparent;
+    border-radius: 0 8px 8px 0;
+    background-color: $btn-color;
+  }
+  @include media(desktop) {
     @include flex-row;
     width: 300px;
     height: 30px;
