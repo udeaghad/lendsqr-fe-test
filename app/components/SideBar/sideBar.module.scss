@@ -1,0 +1,8 @@
+@import '../../variables.module.scss';
+@import '../../mixins';
+
+.main_container {
+  width: 150px;
+  height: 100vh;
+  border: 1px solid $border-red;
+}

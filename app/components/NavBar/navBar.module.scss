@@ -1,0 +1,67 @@
+@import "../../variables.module.scss";
+@import "../../mixins";
+
+.main_container {
+  width: 100%;
+  height: 45px;
+  border: 1px solid $border-red;
+}
+
+.container {
+  @include flex-row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px 0 5px;
+}
+
+.logo {
+  width: 100px;
+  height: 20px;
+  background-image: url("../../../public/assets/lendsqr-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.hamburger {
+  width: fit-content;
+  margin: 0 5px;
+}
+
+.logo_container {
+  width: fit-content;
+  margin: 0 5px;
+}
+
+.docs_container {
+  font-size: 14px;
+}
+
+.bell_container {
+  width: fit-content;
+}
+
+.user_pix_container {
+  width: fit-content;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  @include flex-col-center;
+}
+
+.user_pix {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.name_container {
+  display: none;
+}
+
+.nav_items {
+  @include flex-row-center;
+  gap: 10px;
+  .user_profile {
+    @include flex-row-center;
+  }
+}
