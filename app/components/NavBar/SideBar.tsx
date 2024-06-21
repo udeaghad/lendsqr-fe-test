@@ -91,7 +91,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
           url: null,
         },
         {
-          name: "Service account",
+          name: "Service Account",
           icons: "/assets/user-cog.png",
           url: null,
         },
@@ -121,7 +121,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
           url: null,
         },
         {
-          name: "Audit logs",
+          name: "Audit Logs",
           icons: "/assets/clipboard-list.png",
           url: null,
         },
@@ -161,7 +161,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
           expandIcon={() => <MdKeyboardArrowDown color="#545f7d" size={20} />}
         >
           <Menu.Item key="switch">
-            <div className={styles.navItem_switch}>
+            <div className={styles.navItem_switch} data-testid="menu-switch-org">
               <div className={styles.icon_container}>
                 <Image
                   src="/assets/briefcase.png"
@@ -184,7 +184,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
             </div>
           </Menu.Item>
           <Menu.Item key="dashboard">
-            <div className={styles.navItem}>
+            <div className={styles.navItem} data-testid="menu-dashboard">
               <div className={styles.icon_container}>
                 <Image
                   src="/assets/home1.png"
@@ -206,7 +206,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
               {item.subtitles.map((subtitle, index) => (
                 <MenuItemGroup key={`subgrp${index + 1}`}>
                   <Menu.Item key={`sub${index + 1}`}>
-                    <div className={styles.navItem}>
+                    <div className={styles.navItem} data-testid={`menu-${subtitle.name}`}>
                       <div>
                         <Image
                           src={subtitle.icons}
@@ -232,7 +232,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
           ))}
           <Menu.Divider />
           <Menu.Item key="logout">
-            <div className={styles.navItem}>
+            <div className={styles.navItem} data-testid="menu-logout">
               <div className={styles.icon_container}>
                 <Image
                   src="/assets/sign-out.png"
@@ -251,7 +251,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
         </Menu>
       </div>
       <div className={styles.sidebar}>
-        <div className={styles.navItem_switch}>
+        <div className={styles.navItem_switch} data-testid="sidebar-switch-org">
           <div className={styles.icon_container}>
             <Image
               src="/assets/briefcase.png"
@@ -279,6 +279,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
               ? styles.navItem_active
               : styles.navItem
           }
+          data-testid="sidebar-dashboard"
           onClick={() => handleselect("Dashboard")}
         >
           <div className={styles.icon_container}>
@@ -296,7 +297,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
         <div>
           {dashboardItems.map((item, index) => (
             <div key={index}>
-              <div className={styles.dashboardItems}>{item.title}</div>
+              <div className={styles.dashboardItems} data-testid={`title-${item.title}`}>{item.title}</div>
               {item.subtitles.map((subtitle, index) => (
                 <div
                   key={index}
@@ -305,6 +306,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
                       ? styles.navItem_active
                       : styles.navItem
                   }
+                  data-testid={`sidebar-${subtitle.name}`}
                   id={`nav-${subtitle.name}`}
                   onClick={() => handleselect(subtitle.name)}
                 >
@@ -335,6 +337,7 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
               ? styles.navItem_active
               : styles.navItem
           }
+          data-testid="sidebar-logout"
           onClick={() => handleselect("Logout")}>
           <div className={styles.icon_container}>
             <Image

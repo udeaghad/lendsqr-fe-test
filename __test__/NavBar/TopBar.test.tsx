@@ -17,31 +17,42 @@ describe("TopBar", () => {
     render(
       <TopBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
     );
-    expect(
-      screen.getByPlaceholderText("Search for anything")
-    ).toBeInTheDocument();
-    expect(screen.getByRole("textbox")).toBeInTheDocument();
+    const searchInput = screen.getByPlaceholderText("Search for anything");
+    expect(searchInput).toBeInTheDocument();
+    expect(searchInput).toHaveAttribute("type", "text");
+    expect(searchInput.innerHTML).not.toContain("search for anything");
+    expect(searchInput).not.toHaveAttribute("button");
   });
 
   it("should render text 'Docs' on the top nav bar", () => {
     render(
       <TopBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
     );
-    expect(screen.getByText("Docs")).toBeInTheDocument();
+    const docsText = screen.getByText("Docs");
+    expect(docsText).toBeInTheDocument();
+    expect(docsText.innerHTML).toContain("Docs");
+    expect(docsText.innerHTML).not.toContain("docs");
   });
 
   it("should render bell icon on the top nav bar", () => {
     render(
       <TopBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
     );
-    expect(screen.getByAltText("bell")).toBeInTheDocument();
+    const bellIcon = screen.getByAltText("bell");
+    expect(bellIcon).toBeInTheDocument();
+    expect(bellIcon).toHaveAttribute("src");
+    expect(bellIcon).toHaveAttribute("width");
   });
 
   it("should render user profile pix on the top nav bar", () => {
     render(
       <TopBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
     );
-    expect(screen.getByAltText("userPix")).toBeInTheDocument();
+    const userPix = screen.getByAltText("userPix");
+    expect(userPix).toBeInTheDocument();
+    expect(userPix).toHaveAttribute("src");
+    expect(userPix).toHaveAttribute("width");
+    
   });
 
   it("should render user name on the top nav bar", () => {
