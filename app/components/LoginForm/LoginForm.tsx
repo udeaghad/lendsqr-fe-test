@@ -66,7 +66,7 @@ export const Form = ({
             })}
           />
         </div>
-        {errors.email?.message && <span>{errors.email?.message}</span>}
+        {errors.email?.message && <span data-testid="error-email">{errors.email?.message}</span>}
       </div>
       <div className={styles.form_group}>
         <div className={styles.form_item}>
@@ -99,7 +99,7 @@ export const Form = ({
             {isPasswordVisible ? "Hide" : "Show"}
           </button>
         </div>
-        {errors.password?.message && <span>{errors.password?.message}</span>}
+        {errors.password?.message && <span data-testid="error-password">{errors.password?.message}</span>}
       </div>
       <div className={styles.forget_password}>
         <span>FORGOT PASSWORD?</span>

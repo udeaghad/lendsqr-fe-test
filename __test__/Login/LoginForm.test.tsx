@@ -1,6 +1,15 @@
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  queryByTestId,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import LoginForm, { Form } from "../../app/components/LoginForm/LoginForm";
+// import { FieldError, useForm } from 'react-hook-form';
+// import { LoginFormProps } from "../../types";
 
 describe("LoginForm", () => {
   it("should render the login form", () => {
@@ -35,7 +44,9 @@ describe("LoginForm", () => {
 
   it("should render the text 'Welcome!'", () => {
     render(<LoginForm />);
-    expect(screen.getByText("Welcome!")).toBeInTheDocument();
+    const welcomeText = screen.getByText("Welcome!");
+    expect(welcomeText).toBeInTheDocument();
+    expect(welcomeText.innerHTML).toContain("!");
   });
 
   it("should render the text 'Enter details to login.'", () => {
@@ -82,7 +93,37 @@ describe("LoginForm", () => {
       expect(onSubmit).not.toHaveBeenCalled();
     });
 
-    it("should call togglePasswordVisibility when show button is clicked", () => {
+    it("toggles password visibility", () => {
+      render(
+        <Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />
+      );
+      const passwordInput = screen.getByTestId("password_input");
+      expect(passwordInput).toHaveAttribute("type", "password");
+      expect(passwordInput).not.toHaveAttribute("type", "text");
+      const showButton = screen.getByTestId("show_button");
+      fireEvent.click(showButton);
+      expect(togglePasswordVisibility).toHaveBeenCalled();
+    });
+
+    it("handles email input correctly", () => {
+      render(
+        <Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />
+      );
+      const emailInput = screen.getByTestId("email_input");
+      fireEvent.change(emailInput, { target: { value: "test@example.com" } });
+      expect(emailInput).toHaveValue("test@example.com");
+    });
+
+    it("should render the text 'Hide' when the the show button is clicked", () => {
+      isPasswordVisible = true;
       render(
         <Form
           isPasswordVisible={isPasswordVisible}
@@ -92,23 +133,68 @@ describe("LoginForm", () => {
       );
       const showButton = screen.getByTestId("show_button");
       showButton.click();
-      expect(togglePasswordVisibility).toHaveBeenCalled();
-    })
-
-    it("should render the text 'Hide' when the the show button is clicked", () => {
-      isPasswordVisible = true;
-      render(<Form isPasswordVisible={isPasswordVisible} onSubmit={onSubmit} togglePasswordVisibility={togglePasswordVisibility} />)
-      const showButton = screen.getByTestId("show_button");
-      showButton.click();
       expect(screen.getByText("Hide")).toBeInTheDocument();
     });
 
     it("should render the text 'Show' when the the show button is clicked", () => {
       isPasswordVisible = false;
-      render(<Form isPasswordVisible={isPasswordVisible} onSubmit={onSubmit} togglePasswordVisibility={togglePasswordVisibility} />)
+      render(
+        <Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />
+      );
       const showButton = screen.getByTestId("show_button");
       showButton.click();
       expect(screen.getByText("Show")).toBeInTheDocument();
+      expect(showButton.innerHTML).not.toContain("Hide");
     });
+
+    it("should not displays validation error for valid email", async () => {
+      render(
+        <Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />
+      );
+      const emailInput = screen.getByTestId("email_input");
+      const passwordInput = screen.getByTestId("password_input");
+      const submitButton = screen.getByTestId("login_button");
+
+      fireEvent.change(emailInput, { target: { value: "test@example.com" } });
+      fireEvent.change(passwordInput, { target: { value: "Password@123!" } });
+
+      await act(async () => {
+        fireEvent.click(submitButton);
+      });
+
+      expect(screen.queryByTestId("error-email")).not.toBeTruthy();
+    });
+
+    // it("should displays validation error for invalid email", async () => {
+    //   render(
+    //     <Form
+    //       isPasswordVisible={isPasswordVisible}
+    //       onSubmit={onSubmit}
+    //       togglePasswordVisibility={togglePasswordVisibility}
+    //     />
+    //   );
+    //   const emailInput = screen.getByTestId("email_input");
+    //   const passwordInput = screen.getByTestId("password_input");
+
+    //   fireEvent.change(emailInput, { target: { value: "testexample.com" } });
+    //   fireEvent.change(passwordInput, { target: { value: "Password@123!" } });
+
+    //   const submitButton = screen.getByTestId("login_button");
+    //   await act(() => {
+    //     fireEvent.click(submitButton);
+    //   });
+
+    //   await waitFor(() => {
+    //     expect(screen.queryByTestId("error-email")).toBeInTheDocument();
+    //   });
+    // });
   });
 });

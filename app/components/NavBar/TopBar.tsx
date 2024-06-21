@@ -15,6 +15,7 @@ const TopBar = ({ isCollapsed, setIsCollapsed }: TopBarProps) => {
           <div
             className={styles.hamburger}
             onClick={() => setIsCollapsed(false)}
+            data-testid="hamburger"
           >
             <IoMdMenu size={30} />
           </div>
@@ -22,12 +23,13 @@ const TopBar = ({ isCollapsed, setIsCollapsed }: TopBarProps) => {
           <div
             className={styles.hamburger}
             onClick={() => setIsCollapsed(true)}
+            data-testid="close_hamburger"
           >
             <IoMdClose size={20} />
           </div>
         )}
         <div className={styles.logo_search_cont}>
-          <div className={styles.logo_container}>
+          <div className={styles.logo_container} data-testid="logo">
             <div className={styles.logo} />
           </div>
           <div className={styles.search_container}>
