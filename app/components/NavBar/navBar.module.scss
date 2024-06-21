@@ -139,6 +139,9 @@
   border-radius: 5px;
   left: -300px;
   transition: left 1s;
+  @include media(desktop) {
+    display: none;
+  }
 }
 .show_menu {
   position: absolute;
@@ -149,6 +152,9 @@
   border-radius: 5px;
   left: 0;
   transition: left 1s;
+  @include media(desktop) {
+    display: none;
+  }
 }
 
 .icon {
@@ -175,7 +181,7 @@
     padding: 0 24px;
     &:hover {
       background-color: lighten($color: $btn-color, $amount: 45);
-    };
+    }
   }
 }
 
@@ -219,7 +225,7 @@
     padding: 0 24px;
     &:hover {
       background-color: lighten($color: $btn-color, $amount: 45);
-    };
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+import styles from "../variables.module.scss";
 import NavBar from "../components/NavBar/NavBar";
 
 export default function RootLayout({
@@ -6,10 +7,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
+    <main className={styles.dashboard_layout}>
       <NavBar />
-
-      {children}
+      <div className={styles.children}>{children}</div>
     </main>
   );
 }

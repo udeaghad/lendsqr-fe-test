@@ -22,13 +22,18 @@ declare interface LoginFormProps {
 //   url: string;
 // }
 
-interface SideBarProps {
+declare interface SideBarProps {
   isCollapsed: boolean;
 }
-
-interface TopBarProps {
+declare interface TopBarProps {
   isCollapsed: boolean;
   setIsCollapsed: (isCollapsed: boolean) => void;
 }
+declare interface OverviewCardProps {
+  color: string;
+  icons: string;
+  title: string;
+  count: string;
+}
 
-export type { LoginData, LoginFormProps, SideBarProps, TopBarProps };
+export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps };

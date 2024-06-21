@@ -1,0 +1,25 @@
+@import "../../mixins";
+@import "../../variables.module.scss";
+
+.container {
+  width: 100%;
+  position: relative;
+  z-index: -5;
+}
+
+.heading {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.overview_card {
+  @include flex-row-center;
+  gap: 3px;
+  flex-wrap: wrap;
+
+  @include media(desktop) {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
