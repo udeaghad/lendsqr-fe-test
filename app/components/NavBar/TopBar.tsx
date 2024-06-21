@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { IoMdMenu, IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
+import { PiDotsNineBold } from "react-icons/pi";
 import { IoSearchOutline } from "react-icons/io5";
 import styles from "./navBar.module.scss";
 import bell from "../../../public/assets/np_notification_2425223_000000.png";
@@ -17,7 +18,7 @@ const TopBar = ({ isCollapsed, setIsCollapsed }: TopBarProps) => {
             onClick={() => setIsCollapsed(false)}
             data-testid="hamburger"
           >
-            <IoMdMenu size={30} />
+            <PiDotsNineBold size={30} />
           </div>
         ) : (
           <div

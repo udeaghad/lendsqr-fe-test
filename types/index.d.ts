@@ -36,4 +36,16 @@ declare interface OverviewCardProps {
   count: string;
 }
 
-export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps };
+declare interface OverviewTableProps {
+  data: {
+    organization: string;
+    username: string;
+    email: string;
+    phoneNumber: string;
+    dateJoined: string;
+    status: string;
+  }[];
+}
+
+
+export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps, OverviewTableProps };

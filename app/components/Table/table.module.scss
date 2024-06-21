@@ -1,0 +1,83 @@
+@import "../../mixins";
+@import "../../variables.module.scss";
+
+.container {
+  width: 95vw;
+  position: relative;
+  z-index: 20;
+  overflow: scroll;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px 5px 5px 0px;
+  margin-top: 10px;
+}
+
+.table_container {
+  width: 100%;
+}
+
+.table_heading {
+  font-size: 12px;
+}
+
+.table_head {
+  @include flex-row;
+  gap: 5px;
+  text-transform: uppercase;
+  width: fit-content;
+  // gap: 3px;
+}
+
+.table_body {
+  font-size: 12px;
+}
+
+.hide_table_head {
+  display: none;
+}
+
+.table_row {
+  // @include flex-row;
+  // gap: 5px;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 20px 5px;
+  text-overflow: ellipsis;
+}
+
+.thead {
+  padding: 20px 5px;
+}
+
+.inactive_status {
+  color: #545f7d;
+  background-color: lighten($color: #545f7d, $amount: 45%);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.pending_status {
+  color: #e9b200;
+  background-color: lighten($color: #e9b200, $amount: 40%);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.blacklisted_status {
+  color: #e4033b;
+  background-color: lighten($color: #e4033b, $amount: 40%);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.active_status {
+  color: #39CD62;
+  background-color: lighten($color: #39CD62, $amount: 40%);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}

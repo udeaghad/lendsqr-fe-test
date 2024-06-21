@@ -2,7 +2,7 @@
 @import "../../mixins";
 
 .card_container {
-  width: 150px;
+  width: 145px;
   @include flex-col-center;
   gap: 5px;
   border: 1px solid transparent;
