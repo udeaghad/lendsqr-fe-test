@@ -25,8 +25,8 @@ const UsersTable = ({ data }: OverviewTableProps) => {
 
   return (
     <div className={styles.container}>
-      <table className={styles.table_container}>
-        <thead className={styles.table_heading}>
+      <table className={styles.table_container} data-testid='table'>
+        <thead className={styles.table_heading} data-testid="table_header">
           <tr>
             <th className={styles.thead}>
               <div className={styles.table_head}>
@@ -85,7 +85,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
             <th className={styles.thead} />
           </tr>
         </thead>
-        <tbody className={styles.table_body}>
+        <tbody className={styles.table_body} data-testid="table_body">
           {data.map((item, index) => (
             <tr key={index}>
               <td className={styles.table_row}>{item.organization}</td>
@@ -109,19 +109,20 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   ""
                 )}
               </td>
-              <td className={styles.table_row}>
+              <td className={styles.table_row} data-testid="more_icon">
                 <Dropdown
                   menu={{
                     items: [
                       {
                         key: "1",
                         label: (
-                          <div className={styles.popup_container}>
+                          <div className={styles.popup_container} >
                             <Image
                               src="/assets/np_view_1214519_0000001.png"
                               alt="view details"
                               width={14}
                               height={14}
+                              
                             />
                             <span>View Details</span>
                           </div>
