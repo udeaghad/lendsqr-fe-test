@@ -1,0 +1,47 @@
+@import "../../mixins";
+@import "../../variables.module.scss";
+
+.container {
+  width: 95%;
+  background-color: white;
+  margin-left: 5px;
+  padding: 30px 0;
+}
+
+.details_cont {
+  padding: 10px 5px;
+}
+
+.details {
+  @include flex-col;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.details_heading {
+  text-transform: capitalize;
+}
+
+.detail_title {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.detail_info {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.detail_info_email {
+  text-transform: lowercase;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.detail_wrapper {
+  @include flex-col;
+  gap: 5px;
+}

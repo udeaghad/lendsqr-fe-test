@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "../../dashboard.module.scss";
 import UserProfileCard from "@/app/components/UserProfile/UserProfileCard";
+import GeneralDetailsCard from "@/app/components/GeneralDetails/GeneralDetailsCard";
 
 const UserDetails = () => {
   return (
@@ -37,6 +38,10 @@ const UserDetails = () => {
 
       <div>
         <UserProfileCard />
+      </div>
+
+      <div>
+        <GeneralDetailsCard />
       </div>
     </div>
   );

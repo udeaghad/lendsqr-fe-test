@@ -50,7 +50,7 @@ declare interface OverviewTableProps {
 
 declare interface ClickPopupProps {
   items: MenuProps["items"];
-  handlePopupClick: (key: string, item:any) => void;
+  handlePopupClick: (key: string, item: any) => void;
 }
 
 declare interface FilterDropDownProps {
@@ -64,8 +64,20 @@ declare interface FilterDropDownProps {
 declare interface NumberFormatterProps {
   number: string | number;
   type: "text" | "input";
-  thousandSeparator: boolean;
+  thousandSeparator?: string | boolean;
+  prefix?: string;
+  decimalScale?: number;
+  fixedDecimalScale?: boolean;
 }
 
-
-export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, NumberFormatterProps, OverviewCardProps, OverviewTableProps, ClickPopupProps, FilterDropDownProps};
+export type {
+  LoginData,
+  LoginFormProps,
+  SideBarProps,
+  TopBarProps,
+  NumberFormatterProps,
+  OverviewCardProps,
+  OverviewTableProps,
+  ClickPopupProps,
+  FilterDropDownProps,
+};

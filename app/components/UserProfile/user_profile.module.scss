@@ -1,0 +1,67 @@
+@import "../../mixins";
+@import "../../variables.module.scss";
+
+.container {
+  width: 95%;
+  background-color: white;
+  margin-left: 5px;
+  // z-index: -5;
+}
+
+.user_info {
+  @include flex-col-center;
+  width: 100%;
+  font-size: 14px;
+}
+
+.profile_pics {
+  @include flex-row-center;
+}
+
+.pics {
+  width: 100px;
+  height: 100px;
+}
+
+.profile_info {
+  @include flex-col-center;
+  width: 100%;
+}
+
+.profile_name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.profile_code {
+  font-size: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.tier_cont {
+  @include flex-row-center;
+  gap: 10px;
+  font-size: 10px;
+}
+
+.account_info {
+  @include flex-row-center;
+  align-items: flex-end;
+  font-size: 12px;
+}
+
+.acct_amt {
+  @include flex-row;
+  align-items: flex-end;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pipe {
+  font-size: 16px;
+}
+
+.user_detail_tab {
+  display: none;
+}
