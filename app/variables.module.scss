@@ -20,6 +20,7 @@ $border-red: #e4033b;
 .dashboard_layout {
   width: 100%;
   height: 100vh;
+  // overflow: hidden;
   font-family: $text-work-sans;
   @include media(desktop) {
     display: flex;
@@ -29,7 +30,7 @@ $border-red: #e4033b;
     margin-left: 5px;
     @include media(desktop) {
       margin-top: 120px;
-      margin-left: 20px;
+      margin-left: 45px;
     }
   }
 }

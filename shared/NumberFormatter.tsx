@@ -1,11 +1,8 @@
 "use client";
 import { NumericFormat } from "react-number-format";
+import { NumberFormatterProps } from "@/types";
 
-interface NumberFormatterProps {
-  number: string | number;
-  type: "text" | "input";
-  thousandSeparator: boolean;
-}
+
 
 const NumberFormatter = ({
   number,

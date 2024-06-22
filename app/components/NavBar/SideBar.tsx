@@ -153,7 +153,6 @@ const SideBar = ({ isCollapsed }: SideBarProps) => {
             width: 220,
             fontSize: "12px",
             height: 500,
-            overflowY: "auto",
           }}
           defaultSelectedKeys={["sub1"]}
           defaultOpenKeys={["title1"]}

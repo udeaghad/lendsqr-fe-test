@@ -32,7 +32,6 @@ declare interface TopBarProps {
   setIsCollapsed: (isCollapsed: boolean) => void;
 }
 declare interface OverviewCardProps {
-  color: string;
   icons: string;
   title: string;
   count: string;
@@ -62,5 +61,11 @@ declare interface FilterDropDownProps {
   leftPosition?: string;
 }
 
+declare interface NumberFormatterProps {
+  number: string | number;
+  type: "text" | "input";
+  thousandSeparator: boolean;
+}
 
-export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps, OverviewTableProps, ClickPopupProps, FilterDropDownProps};
+
+export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, NumberFormatterProps, OverviewCardProps, OverviewTableProps, ClickPopupProps, FilterDropDownProps};
