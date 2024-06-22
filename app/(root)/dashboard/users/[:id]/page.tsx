@@ -5,7 +5,7 @@ import UserProfileCard from "@/app/components/UserProfile/UserProfileCard";
 const UserDetails = () => {
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.nav_arrow}>
         <div>
           <Image
             src="/assets/np_back_3007750_000000.png"
@@ -19,20 +19,24 @@ const UserDetails = () => {
         </div>
       </div>
 
-      <div>
-        <span>User Details</span>
+      <div className={styles.page_name_cont}>
+        <div className={styles.page_name}>
+          <span>User Details</span>
+        </div>
+
+        <div className={styles.action_btn_cont}>
+          <div>
+            <button className={styles.blacklist_btn}>Blacklist User</button>
+          </div>
+
+          <div >
+            <button className={styles.activate_btn}>Activate User</button>
+          </div>
+        </div>
       </div>
 
       <div>
-        <span>Blacklist User</span>
-      </div>
-
-      <div>
-        <span>Activate User</span>
-      </div>
-
-      <div>
-        <UserProfileCard/>
+        <UserProfileCard />
       </div>
     </div>
   );
