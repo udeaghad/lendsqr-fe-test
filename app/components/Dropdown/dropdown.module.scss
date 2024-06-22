@@ -1,0 +1,59 @@
+@import "../../variables.module.scss";
+@import "../../mixins";
+
+.dropdown_container {
+  position: absolute;
+  width: 120px;
+  height: fit-content;
+  background-color: white;
+  display: none;
+  z-index: 5;
+  top: 75px;
+  left: 5px;
+  border: 1px solid lighten($color: $dark-text-color, $amount: 45%);
+  padding: 10px 10px 10px 0;
+  border-radius: 5px;
+}
+
+.show {
+  display: block;
+}
+
+.select {
+  width: 100px;
+}
+
+.dropdown_title {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 0 5px 10px;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.btn_container {
+  width: 100%;
+  @include flex-col-center;
+  gap: 5px;
+  padding: 15px 0 5px 0;
+  cursor: pointer;
+}
+
+.dropdown_btn_reset {
+  @include button;
+  font-weight: 500;
+  width: 100px;
+  background-color: white;
+  border: 1px solid $dark-text-color;
+  color: $dark-text-color;
+  &:hover {
+    background-color: darken($color: $btn-color, $amount: 5%);
+    color: white;
+  }
+}
+
+.dropdown_btn_filter {
+  @include button;
+  font-weight: 500;
+  width: 100px;
+}

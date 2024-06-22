@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { OverviewCardProps } from "../../../types";
 import styles from "./overview_card.module.scss";
-import NumberFormatter from "@/utils/NumberFormatter";
+import NumberFormatter from "@/shared/NumberFormatter";
 
 const OverviewCard = ({ color, icons, title, count }: OverviewCardProps) => {
   return (

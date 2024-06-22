@@ -1,3 +1,5 @@
+import type { MenuProps } from "antd";
+
 declare type LoginData = {
   email: string;
   password: string;
@@ -47,5 +49,18 @@ declare interface OverviewTableProps {
   }[];
 }
 
+declare interface ClickPopupProps {
+  items: MenuProps["items"];
+  handlePopupClick: (key: string, item:any) => void;
+}
 
-export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps, OverviewTableProps };
+declare interface FilterDropDownProps {
+  options: { label: string; value: string }[];
+  handleSearch: (key: string, value?: string | string[]) => void;
+  // handleInputs: (key: string, value: string) => void;
+  // handleDate: (key: string, value: string | string[]) => void;
+  leftPosition?: string;
+}
+
+
+export type { LoginData, LoginFormProps, SideBarProps, TopBarProps, OverviewCardProps, OverviewTableProps, ClickPopupProps, FilterDropDownProps};

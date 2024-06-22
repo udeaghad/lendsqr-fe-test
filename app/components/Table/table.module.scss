@@ -48,6 +48,7 @@
 
 .thead {
   padding: 20px 5px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .inactive_status {
@@ -80,4 +81,11 @@
   padding: 5px 10px;
   border-radius: 20px;
   font-weight: 600;
+}
+
+.popup_container {
+  @include flex-row-center;
+  gap: 10px;
+  font-family: $text-work-sans;
+  color: $dark-text-color;
 }
