@@ -11,7 +11,7 @@
   top: 75px;
   left: 5px;
   border: 1px solid lighten($color: $dark-text-color, $amount: 45%);
-  padding: 10px 10px 10px 0;
+  padding: 10px 10px 20px 0;
   border-radius: 5px;
 
   @include media(desktop) {
@@ -26,6 +26,9 @@
 
 .select {
   width: 100px;
+  @include media(desktop) {
+    width: 140px;
+  }
 }
 
 .dropdown_title {
@@ -42,6 +45,10 @@
   gap: 5px;
   padding: 15px 0 5px 0;
   cursor: pointer;
+  @include media(desktop) {
+    @include flex-row-center;
+    margin-left: 5px;
+  }
 }
 
 .dropdown_btn_reset {
@@ -55,10 +62,16 @@
     background-color: darken($color: $btn-color, $amount: 5%);
     color: white;
   }
+  @include media(desktop) {
+    width: 90px;
+  }
 }
 
 .dropdown_btn_filter {
   @include button;
   font-weight: 500;
   width: 100px;
+  @include media(desktop) {
+    width: 90px;
+  }
 }
