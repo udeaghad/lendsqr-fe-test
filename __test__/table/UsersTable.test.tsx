@@ -57,6 +57,11 @@ describe("UsersTable", () => {
     expect(tableHeading).toHaveTextContent("Phone Number");
     expect(tableHeading).toHaveTextContent("Date Joined");
     expect(tableHeading).toHaveTextContent("Status");
+    expect(tableHeading).not.toHaveTextContent("Lendsqr");
+    expect(tableHeading).not.toHaveTextContent("Adedeji");
+    expect(tableHeading).not.toHaveTextContent("08012345678");
+    expect(tableHeading).not.toHaveTextContent("May 12, 2021");
+    expect(tableHeading).not.toHaveTextContent("Inactive");
   });
 
   it("should render the table body", () => {
@@ -79,6 +84,11 @@ describe("UsersTable", () => {
     expect(tableBody).toHaveTextContent("Blacklisted");
     expect(tableBody).toHaveTextContent("Irorun");
     expect(tableBody).toHaveTextContent("Debby Ogana");
+    expect(tableBody).not.toHaveTextContent("Organization");
+    expect(tableBody).not.toHaveTextContent("Username");
+    expect(tableBody).not.toHaveTextContent("Email");
+    expect(tableBody).not.toHaveTextContent("Phone Number");
+    expect(tableBody).not.toHaveTextContent("Date Joined");
   });
 
   it("should render more icons on the table body", () => {
@@ -100,6 +110,4 @@ describe("UsersTable", () => {
     render(<UsersTable data={data} />);
     expect(screen.getAllByRole("columnheader")).toHaveLength(7);
   });
-
-  
 });

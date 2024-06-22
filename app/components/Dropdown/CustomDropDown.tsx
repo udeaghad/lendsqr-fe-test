@@ -4,7 +4,11 @@ import { IoFilter } from "react-icons/io5";
 import styles from "./dropdown.module.scss";
 import { FilterDropDownProps } from "@/types";
 
-const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownProps) => {
+const CustomDropDown = ({
+  options,
+  handleSearch,
+  leftPosition,
+}: FilterDropDownProps) => {
   const handleDropDown = () => {
     const dropdown = document.querySelector(`.${styles.dropdown_container}`);
     if (dropdown) {
@@ -12,15 +16,15 @@ const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownP
     }
   };
   return (
-    <div>
-      <div>
+    <div data-testid="dropdown">
+      <div data-testid="dropdown_icon">
         <IoFilter
           size={12}
           style={{ cursor: "pointer" }}
           onClick={handleDropDown}
         />
       </div>
-      <div className={styles.dropdown_container} style={{left: leftPosition}}>
+      <div className={styles.dropdown_container} style={{ left: leftPosition }}>
         <div>
           <div className={styles.dropdown_title}>Organization</div>
           <Space>
@@ -90,6 +94,7 @@ const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownP
           <div className={styles.dropdown_title}>Status</div>
           <Space>
             <Select
+              data-testid="dropdown_select"
               placeholder={
                 <span
                   style={{ textTransform: "capitalize", fontWeight: "500" }}
@@ -98,7 +103,7 @@ const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownP
                 </span>
               }
               className={styles.select}
-              onChange={(value) => handleSearch("organization", value)}
+              onChange={(value) => handleSearch("status", value)}
               options={[
                 { label: "Active", value: "active" },
                 { label: "Inactive", value: "inactive" },
@@ -114,6 +119,7 @@ const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownP
             className={styles.dropdown_btn_reset}
             type="button"
             onClick={() => handleSearch("reset")}
+            data-testid="dropdown_reset"
           >
             Reset
           </button>
@@ -121,6 +127,7 @@ const CustomDropDown = ({ options, handleSearch, leftPosition }: FilterDropDownP
             className={styles.dropdown_btn_filter}
             type="button"
             onClick={() => handleSearch("filter")}
+            data-testid="dropdown_filter"
           >
             Filter
           </button>
