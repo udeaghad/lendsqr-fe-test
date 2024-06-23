@@ -34,7 +34,7 @@ declare interface TopBarProps {
 declare interface OverviewCardProps {
   icons: string;
   title: string;
-  count: string;
+  count: string | number;
 }
 
 declare interface OverviewTableProps {
@@ -70,6 +70,58 @@ declare interface NumberFormatterProps {
   fixedDecimalScale?: boolean;
 }
 
+declare interface UsersDetailsProps {
+  id: string;
+  personalInfo: {
+    organization: string;
+    name: {
+      first: string;
+      last: string;
+    };
+    phoneNumber: string;
+    email: string;
+    bvn: string;
+    gender: string;
+    maritalStatus: string;
+    childern: string;
+    residenceType: string;
+    tier: string;
+    bank: string;
+    accountNumber: string;
+    referralCode: string;
+  };
+  educationAndEmployment: {
+    educationLevel: string;
+    employmentStatus: string;
+    sector: string;
+    employmentDuration: string;
+    officeEmail: string;
+    monthlyIncome: string;
+    loanRepayment: string;
+  };
+  social: {
+    twitter: string;
+    facebook: string;
+    instagram: string;
+  };
+  guarantor: {
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    email: string;
+    relationship: string;
+  };
+}
+
+declare interface UsersContextProps {
+  users: UsersDetailsProps[];
+  setUsers: (users: UsersDetailsProps[]) => void;
+}
+
+declare type ChildrenProps = {
+  children: React.ReactNode;
+};
+
 export type {
   LoginData,
   LoginFormProps,
@@ -80,4 +132,7 @@ export type {
   OverviewTableProps,
   ClickPopupProps,
   FilterDropDownProps,
+  UsersDetailsProps,
+  UsersContextProps,
+  ChildrenProps,
 };

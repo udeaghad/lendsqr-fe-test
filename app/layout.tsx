@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
-import { CustomProvider } from "rsuite";
+import Providers from "./Providers";
 import styles from "./variables.module.scss";
 import "rsuite/dist/rsuite-no-reset.min.css";
 
@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <CustomProvider>
-        <body className={styles.body}>{children}</body>
-      </CustomProvider>
+      <body className={styles.body}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
