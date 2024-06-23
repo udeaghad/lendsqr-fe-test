@@ -6,6 +6,7 @@
   position: relative;
   @include media(desktop) {
     left: 240px;
+    width: calc(100% - 240px);
   }
   // z-index: -5;
 }
@@ -57,7 +58,13 @@
   justify-content: flex-start;
   // align-items: center;
   gap: 20px;
-  margin: 10px 10px 10px 5px;
+  margin: 10px 10px 36px 5px;
+  @include media(desktop) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 95%;
+  }
 }
 
 .page_name {
@@ -70,6 +77,9 @@
   justify-content: space-between;
   align-items: center;
   gap: 5px;
+  @include media(desktop) {
+    gap: 20px;
+  }
 }
 
 .blacklist_btn {
@@ -92,6 +102,10 @@
   @include media(tablet) {
     font-size: 14px;
   }
+  @include media(desktop) {
+    width: 170px;
+    font-size: 14px;
+  }
 }
 
 .activate_btn {
@@ -112,6 +126,10 @@
   }
 
   @include media(tablet) {
+    font-size: 14px;
+  }
+  @include media(desktop) {
+    width: 170px;
     font-size: 14px;
   }
 }

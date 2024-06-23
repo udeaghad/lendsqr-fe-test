@@ -1,10 +1,22 @@
+"use client";
 import Image from "next/image";
 import { Rate, Divider } from "rsuite";
 
 import styles from "./user_profile.module.scss";
 import NumberFormatter from "@/shared/NumberFormatter";
+import { useState } from "react";
 
 const UserProfileCard = () => {
+  const [selectedTab, setSelectedTab] = useState("general-details");
+
+  const handleSelectedTab = (tab: string) => {
+    setSelectedTab(tab);
+    const tabs = document.querySelectorAll(`.${styles.tab}`);
+    tabs.forEach((tab) => tab.classList.remove(styles.active));
+    const selected = document.getElementById(tab);
+    selected?.classList.add(styles.active);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.user_info}>
@@ -22,6 +34,7 @@ const UserProfileCard = () => {
             <div className={styles.profile_name}>Grace Effiom</div>
             <div className={styles.profile_code}>LSQFf587g90</div>
           </div>
+          <Divider vertical className={styles.pipe_after_name} />
 
           <div className={styles.tier_cont}>
             <div>User's Tier</div>
@@ -35,6 +48,7 @@ const UserProfileCard = () => {
               />
             </div>
           </div>
+          <Divider vertical className={styles.pipe_after_star} />
 
           <div className={styles.account_info}>
             <div className={styles.acct_amt}>
@@ -54,12 +68,48 @@ const UserProfileCard = () => {
       </div>
 
       <div className={styles.user_detail_tab}>
-        <div>General Details</div>
-        <div>Documents</div>
-        <div>Bank Details</div>
-        <div>Loans</div>
-        <div>Savings</div>
-        <div>App and System</div>
+        <div
+          className={selectedTab === "general-details" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("general-details")}
+          id="general-details"
+        >
+          General Details
+        </div>
+        <div
+          className={selectedTab === "documents" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("documents")}
+          id="documents"
+        >
+          Documents
+        </div>
+        <div
+          className={selectedTab === "bank-details" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("bank-details")}
+          id="bank-details"
+        >
+          Bank Details
+        </div>
+        <div
+          className={selectedTab === "loans" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("loans")}
+          id="loans"
+        >
+          Loans
+        </div>
+        <div
+          className={selectedTab === "savings" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("savings")}
+          id="savings"
+        >
+          Savings
+        </div>
+        <div
+          className={selectedTab === "App-and-System" ? styles.active_tab : styles.tab}
+          onClick={() => handleSelectedTab("App-and-System")}
+          id="App-and-System"
+        >
+          App and System
+        </div>
       </div>
     </div>
   );

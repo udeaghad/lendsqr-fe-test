@@ -5,6 +5,12 @@
   width: 95%;
   background-color: white;
   margin-left: 5px;
+  padding: 20px 0;
+
+  @include media(desktop) {
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
   // z-index: -5;
 }
 
@@ -12,6 +18,12 @@
   @include flex-col-center;
   width: 100%;
   font-size: 14px;
+  @include media(desktop) {
+    @include flex-row-center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-left: 22px;
+  }
 }
 
 .profile_pics {
@@ -26,29 +38,50 @@
 .profile_info {
   @include flex-col-center;
   width: 100%;
+  @include media(desktop) {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+  }
 }
 
 .profile_name {
   font-size: 16px;
   font-weight: 600;
+  @include media(desktop) {
+    font-size: 22px;
+  }
 }
 
 .profile_code {
   font-size: 8px;
   font-weight: 500;
   text-align: center;
+  @include media(desktop) {
+    text-align: left;
+    font-size: 14px;
+  }
 }
 
 .tier_cont {
   @include flex-row-center;
   gap: 10px;
   font-size: 10px;
+  @include media(desktop) {
+    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .account_info {
   @include flex-row-center;
   align-items: flex-end;
   font-size: 12px;
+  @include media(desktop) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .acct_amt {
@@ -56,12 +89,61 @@
   align-items: flex-end;
   font-size: 16px;
   font-weight: 600;
+  @include media(desktop) {
+    font-size: 22px;
+  }
+}
+
+.pipe_after_name {
+  display: none;
+  @include media(desktop) {
+    display: block;
+    font-size: 70px;
+  }
+}
+
+.pipe_after_star {
+  display: none;
+  @include media(desktop) {
+    display: block;
+    font-size: 70px;
+  }
 }
 
 .pipe {
   font-size: 16px;
+  @include media(desktop) {
+    display: none;
+  }
 }
 
 .user_detail_tab {
   display: none;
+  @include media(desktop) {
+    @include flex-row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 22px;
+    margin-right: 22px;
+    // width: 100%;
+    margin-top: 20px;
+  }
+}
+.tab {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 20px;
+  border-bottom: 3px solid transparent;
+  &:hover {
+    border-bottom: 3px solid $btn-color;
+  }
+}
+
+.active_tab {
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0 20px;
+  border-bottom: 3px solid $btn-color;
 }

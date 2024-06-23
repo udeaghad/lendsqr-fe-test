@@ -50,7 +50,7 @@ const GeneralDetailsCard = () => {
 
       <Divider />
 
-      <div>
+      <div className={styles.details_cont}>
         <h5 className={styles.details_heading}>education and employment</h5>
         <div className={styles.details}>
           <div className={styles.detail_wrapper}>
@@ -89,7 +89,7 @@ const GeneralDetailsCard = () => {
 
       <Divider />
 
-      <div>
+      <div className={styles.details_cont}>
         <h5 className={styles.details_heading}>socials</h5>
         <div className={styles.details}>
           <div className={styles.detail_wrapper}>
@@ -111,7 +111,7 @@ const GeneralDetailsCard = () => {
 
       <Divider />
 
-      <div>
+      <div className={styles.details_cont}>
         <h5 className={styles.details_heading}>guarantor</h5>
         <div className={styles.details}>
           <div className={styles.detail_wrapper}>
