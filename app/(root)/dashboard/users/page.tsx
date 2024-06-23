@@ -1,43 +1,10 @@
 import styles from "../dashboard.module.scss";
 import OverviewCard from "@/app/components/OverviewCard/OverviewCard";
-import UsersTable from "@/app/components/Table/UsersTable";
+import UsersTable from "@/app/components/Table/UsersTable"; 
+import getUsersData from "../../../data/usersData.json";
 
 export default function Dashboard() {
-  const data = [
-    {
-      organization: "Lendsqr",
-      username: "Adedeji",
-      email: "1234@gmail.com",
-      phoneNumber: "08012345678",
-      dateJoined: "May 12, 2021",
-      status: "Inactive",
-    },
-    {
-      organization: "Irorun",
-      username: "Debby Ogana",
-      email: "debby@mail.com",
-      phoneNumber: "08012345678",
-      dateJoined: "May 12, 2021",
-      status: "Active",
-    },
-    {
-      organization: "Lendsqr",
-      username: "Grace Effiom",
-      email: "grace@yahoo.com",
-      phoneNumber: "08012345678",
-      dateJoined: "May 12, 2021",
-      status: "Pending",
-    },
-    {
-      organization: "Lendsqr",
-      username: "Adedeji",
-      email: "Tosin@mail.com",
-      phoneNumber: "08012345678",
-      dateJoined: "May 12, 2021",
-      status: "Blacklisted",
-    },
-  ];
-
+  const data = JSON.parse(JSON.stringify(getUsersData));
   return (
     <div className={styles.container}>
       <h3 className={styles.heading}>Users</h3>
@@ -65,7 +32,7 @@ export default function Dashboard() {
       </div>
 
       <div>
-        <UsersTable data={data} />
+        <UsersTable data={data.data} />
       </div>
     </div>
   );

@@ -1,16 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import { IoFilter } from "react-icons/io5";
+import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/navigation";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Image from "next/image";
 import { Dropdown, Space, Pagination } from "antd";
 import styles from "./table.module.scss";
 import { OverviewTableProps } from "../../../types";
 import CustomDropDown from "../Dropdown/CustomDropDown";
+import { UsersContext } from "../../context/UsersContext";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
+  const { setUserDetails } = useContext(UsersContext) || {};
+
+  const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(2);
+  const [pageSize, setPageSize] = useState(10);
   const [currentData, setCurrentData] = useState(data);
 
   useEffect(() => {
@@ -20,7 +24,12 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   }, [currentPage, pageSize, data]);
 
   const handlePopupClick = (key: string, item: any) => {
-    console.log("clicked", { key }, { item });
+    if(key === "1") {
+      if (setUserDetails) {
+        setUserDetails(item);
+      }
+      router.push(`/dashboard/users/${item?.id}`);
+    }
   };
 
   const handleSearch = (key: string, value?: string | string[]) => {
@@ -28,15 +37,19 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   };
 
   const filterOptions = [
-    { label: "ABC", value: "ABC" },
-    { label: "DEF", value: "DEF" },
-    { label: "GHI", value: "GHI" },
+    { label: "lendsqr", value: "lendsqr" },
+    { label: "opay", value: "opay" },
+    { label: "moniepoint", value: "moniepoint" },
+    { label: "oneBank", value: "oneBank" },
+    { label: "palmpay", value: "palmpay" },
+    { label: "alat", value: "alat" },
   ];
 
   const handlePaginateSize = (page: number, pageSize: number) => {
     setCurrentPage(page);
     setPageSize(pageSize);
   };
+
 
   return (
     <div>
@@ -102,26 +115,30 @@ const UsersTable = ({ data }: OverviewTableProps) => {
             </tr>
           </thead>
           <tbody className={styles.table_body} data-testid="table_body">
-            {currentData.map((item, index) => (
-              <tr key={index}>
-                <td className={styles.table_row}>{item.organization}</td>
-                <td className={styles.table_row}>{item.username}</td>
+            {currentData.map((item) => (
+              <tr key={item?.id}>
+                <td className={styles.table_row}>{item.info.org}</td>
+                <td className={styles.table_row}>{item.info.firstName}</td>
                 {/* <td className={`${styles.hide_table_head} ${styles.table_row}`}> */}
-                <td className={styles.table_row}>{item.email}</td>
-                <td className={styles.table_row}>{item.phoneNumber}</td>
-                <td className={styles.table_row}>{item.dateJoined}</td>
+                <td className={styles.table_row}>{item.info.email}</td>
+                <td className={styles.table_row}>{item.info.phoneNumber}</td>
+                <td className={styles.table_row}>{item.info.dateJoined}</td>
                 <td className={styles.table_row}>
-                  {item.status === "Active" ? (
-                    <span className={styles.active_status}>{item.status}</span>
-                  ) : item.status === "Inactive" ? (
-                    <span className={styles.inactive_status}>
-                      {item.status}
+                  {item.info.status === "Active" ? (
+                    <span className={styles.active_status}>
+                      {item.info.status}
                     </span>
-                  ) : item.status === "Pending" ? (
-                    <span className={styles.pending_status}>{item.status}</span>
-                  ) : item.status === "Blacklisted" ? (
+                  ) : item.info.status === "Inactive" ? (
+                    <span className={styles.inactive_status}>
+                      {item.info.status}
+                    </span>
+                  ) : item.info.status === "Pending" ? (
+                    <span className={styles.pending_status}>
+                      {item.info.status}
+                    </span>
+                  ) : item.info.status === "Blacklisted" ? (
                     <span className={styles.blacklisted_status}>
-                      {item.status}
+                      {item.info.status}
                     </span>
                   ) : (
                     ""
@@ -134,7 +151,10 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                         {
                           key: "1",
                           label: (
-                            <div className={styles.popup_container}>
+                            <div
+                              className={styles.popup_container}
+
+                            >
                               <Image
                                 src="/assets/np_view_1214519_0000001.png"
                                 alt="view details"
@@ -202,10 +222,10 @@ const UsersTable = ({ data }: OverviewTableProps) => {
               value={pageSize}
               className={styles.select_paginate_size}
             >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
               <option value="50">50</option>
+              <option value="70">70</option>
               <option value="100">100</option>
             </select>
           </div>

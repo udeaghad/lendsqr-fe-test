@@ -2,11 +2,12 @@ import Image from "next/image";
 import styles from "../../dashboard.module.scss";
 import UserProfileCard from "@/app/components/UserProfile/UserProfileCard";
 import GeneralDetailsCard from "@/app/components/GeneralDetails/GeneralDetailsCard";
+import Link from "next/link";
 
 const UserDetails = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.nav_arrow}>
+      <Link href="/dashboard/users" className={styles.nav_arrow}>
         <div>
           <Image
             src="/assets/np_back_3007750_000000.png"
@@ -18,7 +19,7 @@ const UserDetails = () => {
         <div>
           <span>Back to Users</span>
         </div>
-      </div>
+      </Link>
 
       <div className={styles.page_name_cont}>
         <div className={styles.page_name}>
@@ -30,7 +31,7 @@ const UserDetails = () => {
             <button className={styles.blacklist_btn}>Blacklist User</button>
           </div>
 
-          <div >
+          <div>
             <button className={styles.activate_btn}>Activate User</button>
           </div>
         </div>

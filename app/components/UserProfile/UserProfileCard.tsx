@@ -1,12 +1,17 @@
 "use client";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import { Rate, Divider } from "rsuite";
 
 import styles from "./user_profile.module.scss";
 import NumberFormatter from "@/shared/NumberFormatter";
-import { useState } from "react";
+import { UsersContext } from "../../context/UsersContext";
 
 const UserProfileCard = () => {
+  const { userdetails } = useContext(UsersContext) || {};
+
+  const { info, educationAndEmployment } = userdetails || {};
+
   const [selectedTab, setSelectedTab] = useState("general-details");
 
   const handleSelectedTab = (tab: string) => {
@@ -31,8 +36,10 @@ const UserProfileCard = () => {
         </div>
         <div className={styles.profile_info}>
           <div>
-            <div className={styles.profile_name}>Grace Effiom</div>
-            <div className={styles.profile_code}>LSQFf587g90</div>
+            <div
+              className={styles.profile_name}
+            >{`${info?.firstName} ${info?.lastName}`}</div>
+            <div className={styles.profile_code}>{info?.referralCode}</div>
           </div>
           <Divider vertical className={styles.pipe_after_name} />
 
@@ -41,7 +48,7 @@ const UserProfileCard = () => {
             <div className={styles.tier_star}>
               <Rate
                 disabled
-                defaultValue={1}
+                defaultValue={Number(info?.tier)}
                 max={3}
                 size="xs"
                 color="yellow"
@@ -53,7 +60,7 @@ const UserProfileCard = () => {
           <div className={styles.account_info}>
             <div className={styles.acct_amt}>
               <NumberFormatter
-                number={500000}
+                number={Number(educationAndEmployment?.monthlyIncome)}
                 type="text"
                 prefix="₦"
                 thousandSeparator={true}
@@ -62,28 +69,34 @@ const UserProfileCard = () => {
               />
             </div>
             <Divider vertical className={styles.pipe} />
-            <div>5554215872/Providus Bank</div>
+            <div>{`${info?.account}/${info?.bank}`}</div>
           </div>
         </div>
       </div>
 
       <div className={styles.user_detail_tab}>
         <div
-          className={selectedTab === "general-details" ? styles.active_tab : styles.tab}
+          className={
+            selectedTab === "general-details" ? styles.active_tab : styles.tab
+          }
           onClick={() => handleSelectedTab("general-details")}
           id="general-details"
         >
           General Details
         </div>
         <div
-          className={selectedTab === "documents" ? styles.active_tab : styles.tab}
+          className={
+            selectedTab === "documents" ? styles.active_tab : styles.tab
+          }
           onClick={() => handleSelectedTab("documents")}
           id="documents"
         >
           Documents
         </div>
         <div
-          className={selectedTab === "bank-details" ? styles.active_tab : styles.tab}
+          className={
+            selectedTab === "bank-details" ? styles.active_tab : styles.tab
+          }
           onClick={() => handleSelectedTab("bank-details")}
           id="bank-details"
         >
@@ -104,7 +117,9 @@ const UserProfileCard = () => {
           Savings
         </div>
         <div
-          className={selectedTab === "App-and-System" ? styles.active_tab : styles.tab}
+          className={
+            selectedTab === "App-and-System" ? styles.active_tab : styles.tab
+          }
           onClick={() => handleSelectedTab("App-and-System")}
           id="App-and-System"
         >

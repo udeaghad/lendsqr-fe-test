@@ -47,8 +47,9 @@
   // @include flex-row;
   // gap: 5px;
   border-bottom: 1px solid #f0f0f0;
-  padding: 20px 5px;
+  padding: 20px 10px;
   text-overflow: ellipsis;
+  text-transform: capitalize;
 }
 
 .thead {
