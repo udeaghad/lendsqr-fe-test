@@ -2,12 +2,20 @@
 
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import styles from "./loginForm.module.scss";
 import { LoginData, LoginFormProps } from "../../../types";
 
 const LoginForm = () => {
+  const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const isLoggedIn = localStorage.getItem("user");
+
+  if (isLoggedIn) {
+    router.push("/dashboard/users");
+  }
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
@@ -15,6 +23,8 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<LoginData> = (data) => {
     console.log(data);
+    localStorage.setItem("user", JSON.stringify({ userEmail: data.email }));
+    router.push("/dashboard/users");
   };
   return (
     <div className={styles.main_container}>
@@ -66,7 +76,9 @@ export const Form = ({
             })}
           />
         </div>
-        {errors.email?.message && <span data-testid="error-email">{errors.email?.message}</span>}
+        {errors.email?.message && (
+          <span data-testid="error-email">{errors.email?.message}</span>
+        )}
       </div>
       <div className={styles.form_group}>
         <div className={styles.form_item}>
@@ -99,7 +111,9 @@ export const Form = ({
             {isPasswordVisible ? "Hide" : "Show"}
           </button>
         </div>
-        {errors.password?.message && <span data-testid="error-password">{errors.password?.message}</span>}
+        {errors.password?.message && (
+          <span data-testid="error-password">{errors.password?.message}</span>
+        )}
       </div>
       <div className={styles.forget_password}>
         <span>FORGOT PASSWORD?</span>

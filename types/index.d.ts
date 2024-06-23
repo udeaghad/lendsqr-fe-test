@@ -105,6 +105,11 @@ declare type ChildrenProps = {
   children: React.ReactNode;
 };
 
+declare interface UsersContextProps {
+  userdetails: UsersDetailsProps | null;
+  setUserDetails: (details: UsersDetailsProps) => void;
+}
+
 export type {
   LoginData,
   LoginFormProps,

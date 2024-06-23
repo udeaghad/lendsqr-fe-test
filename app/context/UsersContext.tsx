@@ -1,11 +1,6 @@
 "use client";
 import { createContext, useState } from "react";
-import { ChildrenProps, UsersDetailsProps } from "@/types";
-
-interface UsersContextProps {
-  userdetails: UsersDetailsProps | null;
-  setUserDetails: (details: UsersDetailsProps) => void;
-}
+import { ChildrenProps, UsersDetailsProps, UsersContextProps } from "@/types";
 
 export const UsersContext = createContext<UsersContextProps | null>(null);
 
