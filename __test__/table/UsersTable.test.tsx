@@ -235,7 +235,7 @@ describe("DataTable", () => {
     expect(screen.getAllByRole("columnheader")).toHaveLength(7);
   });
 
-  it('renders the CustomDropDown components', () => {
+  it('renders the CustomDropDown components that hanldes filtering', () => {
     render(
       <DataTable
         currentData={currentData}

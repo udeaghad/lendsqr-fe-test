@@ -21,7 +21,7 @@ const DataTable = ({
   handleReset,
   currentData,
   handlePopupClick,
-}:DataTableProps) => {
+}: DataTableProps) => {
   return (
     <table className={styles.table_container} data-testid="table">
       <thead className={styles.table_heading} data-testid="table_header">
@@ -29,67 +29,79 @@ const DataTable = ({
           <th className={styles.thead}>
             <div className={styles.table_head}>
               <div>Organization</div>
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead}>
             <div className={styles.table_head}>
-              Username
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div>Username</div>
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead}>
             <div className={styles.table_head}>
-              Email
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div>Email</div>
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead}>
             <div className={styles.table_head}>
-              Phone Number
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div>Phone Number</div>
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead}>
             <div className={styles.table_head}>
-              Date Joined
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div>Date Joined</div>
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead}>
             <div className={styles.table_head}>
-              Status
-              <CustomDropDown
-                options={filterOptions}
-                handleSearch={handleSearch}
-                handleFilterBtn={handleFilterBtn}
-                handleReset={handleReset}
-              />
+              <div>Status</div>
+              <div data-testid="custom_dropdown">
+                <CustomDropDown
+                  options={filterOptions}
+                  handleSearch={handleSearch}
+                  handleFilterBtn={handleFilterBtn}
+                  handleReset={handleReset}
+                />
+              </div>
             </div>
           </th>
           <th className={styles.thead} />
