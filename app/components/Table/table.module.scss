@@ -29,9 +29,10 @@
 
 .table_head {
   @include flex-row;
+  justify-content: space-between;
   gap: 5px;
   text-transform: uppercase;
-  width: fit-content;
+  width: 100%;
   // gap: 3px;
 }
 

@@ -9,6 +9,7 @@ const CustomDropDown = ({
   handleSearch,
   leftPosition,
   handleFilterBtn,
+  handleReset,
 }: FilterDropDownProps) => {
   const handleDropDown = () => {
     const dropdown = document.querySelector(`.${styles.dropdown_container}`);
@@ -17,12 +18,12 @@ const CustomDropDown = ({
     }
   };
 
-  const handleCloseBtn = () => {
-    const dropdown = document.querySelector(`.${styles.dropdown_container}`);
-    if (dropdown) {
-      dropdown.classList.remove(styles.show);
-    }
-  };
+  // const handleCloseBtn = () => {
+  //   const dropdown = document.querySelector(`.${styles.dropdown_container}`);
+  //   if (dropdown) {
+  //     dropdown.classList.remove(styles.show);
+  //   }
+  // };
   return (
     <div data-testid="dropdown">
       <div data-testid="dropdown_icon">
@@ -127,8 +128,8 @@ const CustomDropDown = ({
             className={styles.dropdown_btn_reset}
             type="button"
             onClick={() => {
-              handleSearch("reset");
-              handleCloseBtn();
+              handleReset();
+              // handleCloseBtn();
             }}
             data-testid="dropdown_reset"
           >
@@ -138,8 +139,7 @@ const CustomDropDown = ({
             className={styles.dropdown_btn_filter}
             type="button"
             onClick={() => {
-              handleFilterBtn;
-              // handleCloseBtn();
+              handleFilterBtn();
             }}
             data-testid="dropdown_filter"
           >

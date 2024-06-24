@@ -23,26 +23,27 @@ const UsersTable = ({ data }: OverviewTableProps) => {
     const start = (currentPage - 1) * pageSize;
     const end = start + pageSize;
     setCurrentData(userData.slice(start, end));
-  }, [currentPage, pageSize, data]);
+  }, [currentPage, pageSize, userData, data]);
 
   const handlePopupClick = (key: string, item: any) => {
     if (key === "1") {
-     localStorage.setItem("userDetails", JSON.stringify(item));
+      localStorage.setItem("userDetails", JSON.stringify(item));
       router.push(`/dashboard/users/${item?.id}`);
     }
   };
 
   const filterData = () => {
-    console.log({searchValue})
+    console.log({ searchValue });
     const { field, value } = searchValue;
     if (field === "") {
-      return 
+      return;
     } else if (field === "organization") {
       const filteredData = userData.filter((item) =>
         item.info.org.toLowerCase().includes(value.toLowerCase())
       );
-      console.log('hi', filteredData)
+      console.log("hi", filteredData);
       setUserData(filteredData);
+      console.log("hi2", filteredData);
     } else if (field === "username") {
       const filteredData = userData.filter((item) => {
         return (
@@ -72,19 +73,28 @@ const UsersTable = ({ data }: OverviewTableProps) => {
       );
       setUserData(filteredData);
     } else if (field === "reset") {
+      console.log("reset");
       setUserData(data);
       setSearchValue({ field: "", value: "" });
-
     }
   };
 
   const handleFilterBtn = () => {
-    console.log("filter")
+    console.log("filter");
     filterData();
+  };
+
+  const handleReset = () => {
+    console.log("reset");
+    setUserData(data);
   }
 
+  useEffect(() => {
+    console.log("currentdata", { userData });
+  }, [userData]);
+
   const handleSearch = (key: string, value?: string | string[]) => {
-    // console.log("search", { key }, { value });
+    console.log("search", { key }, { value });
     setSearchValue({ field: key, value: value as string });
   };
 
@@ -115,6 +125,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -125,6 +136,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -135,6 +147,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -145,6 +158,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -155,6 +169,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -165,6 +180,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                     options={filterOptions}
                     handleSearch={handleSearch}
                     handleFilterBtn={handleFilterBtn}
+                    handleReset={handleReset}
                   />
                 </div>
               </th>
@@ -284,11 +300,11 @@ const UsersTable = ({ data }: OverviewTableProps) => {
             </select>
           </div>
           <div>
-            <span>out of {data.length}</span>
+            <span>out of {userData.length}</span>
           </div>
         </div>
         <Pagination
-          total={data.length}
+          total={userData.length}
           showSizeChanger={false}
           current={currentPage}
           pageSize={pageSize}
