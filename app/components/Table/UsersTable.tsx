@@ -11,20 +11,24 @@ import { UsersContext } from "../../context/UsersContext";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
   const { setUserDetails } = useContext(UsersContext) || {};
-
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [currentData, setCurrentData] = useState(data);
+  const [userData, setUserData] = useState(data);
+  const [searchValue, setSearchValue] = useState({
+    field: "",
+    value: "",
+  });
 
   useEffect(() => {
     const start = (currentPage - 1) * pageSize;
     const end = start + pageSize;
-    setCurrentData(data.slice(start, end));
+    setCurrentData(userData.slice(start, end));
   }, [currentPage, pageSize, data]);
 
   const handlePopupClick = (key: string, item: any) => {
-    if(key === "1") {
+    if (key === "1") {
       if (setUserDetails) {
         setUserDetails(item);
       }
@@ -32,8 +36,60 @@ const UsersTable = ({ data }: OverviewTableProps) => {
     }
   };
 
+  const filterData = () => {
+    console.log({searchValue})
+    const { field, value } = searchValue;
+    if (field === "") {
+      return 
+    } else if (field === "organization") {
+      const filteredData = userData.filter((item) =>
+        item.info.org.toLowerCase().includes(value.toLowerCase())
+      );
+      console.log('hi', filteredData)
+      setUserData(filteredData);
+    } else if (field === "username") {
+      const filteredData = userData.filter((item) => {
+        return (
+          item.info.firstName.toLowerCase().includes(value.toLowerCase()) ||
+          item.info.lastName.toLowerCase().includes(value.toLowerCase())
+        );
+      });
+      setUserData(filteredData);
+    } else if (field === "email") {
+      const filteredData = userData.filter((item) =>
+        item.info.email.toLowerCase().includes(value.toLowerCase())
+      );
+      setUserData(filteredData);
+    } else if (field === "phoneNumber") {
+      const filteredData = userData.filter((item) =>
+        item.info.phoneNumber.toLowerCase().includes(value.toLowerCase())
+      );
+      setUserData(filteredData);
+    } else if (field === "date") {
+      const filteredData = userData.filter(
+        (item) => new Date(item.info.dateJoined) >= new Date(value)
+      );
+      setUserData(filteredData);
+    } else if (field === "status") {
+      const filteredData = userData.filter((item) =>
+        item.info.status.toLowerCase().includes(value.toLowerCase())
+      );
+      setUserData(filteredData);
+    } else if (field === "reset") {
+      setUserData(data);
+      setSearchValue({ field: "", value: "" });
+      
+    }
+  };
+
+  const handleFilterBtn = () => {
+    console.log("filter")
+    filterData();
+  }
+
   const handleSearch = (key: string, value?: string | string[]) => {
-    console.log("search", { key }, { value });
+    // console.log("search", { key }, { value });
+    setSearchValue({ field: key, value: value as string });
   };
 
   const filterOptions = [
@@ -50,7 +106,6 @@ const UsersTable = ({ data }: OverviewTableProps) => {
     setPageSize(pageSize);
   };
 
-
   return (
     <div>
       <div className={styles.container}>
@@ -63,6 +118,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -72,6 +128,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -81,6 +138,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -90,6 +148,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -99,6 +158,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -108,6 +168,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                   <CustomDropDown
                     options={filterOptions}
                     handleSearch={handleSearch}
+                    handleFilterBtn={handleFilterBtn}
                   />
                 </div>
               </th>
@@ -151,10 +212,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
                         {
                           key: "1",
                           label: (
-                            <div
-                              className={styles.popup_container}
-
-                            >
+                            <div className={styles.popup_container}>
                               <Image
                                 src="/assets/np_view_1214519_0000001.png"
                                 alt="view details"

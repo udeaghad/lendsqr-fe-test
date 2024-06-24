@@ -52,6 +52,7 @@ declare interface FilterDropDownProps {
   // handleInputs: (key: string, value: string) => void;
   // handleDate: (key: string, value: string | string[]) => void;
   leftPosition?: string;
+  handleFilterBtn: () => void;
 }
 
 declare interface NumberFormatterProps {
