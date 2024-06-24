@@ -1,13 +1,24 @@
 "use client";
-import { useContext } from "react";
+import { useEffect, useState } from "react";
 import { Divider } from "rsuite";
 import styles from "./general_details.module.scss";
-import { UsersContext } from "../../context/UsersContext";
 import NumberFormatter from "@/shared/NumberFormatter";
+import { UsersDetailsProps } from "@/types";
 
 const GeneralDetailsCard = () => {
-  const { userdetails } = useContext(UsersContext) || {};
-  const { info, educationAndEmployment, guarantor } = userdetails || {};
+  const [userDetails, setUserDetails] = useState<UsersDetailsProps | null>(
+    null
+  );
+
+  const getUsersData = () => {
+    const getUserDetails = localStorage.getItem("userDetails");
+    if (getUserDetails) setUserDetails(JSON.parse(getUserDetails));
+  };
+
+  useEffect(() => {
+    getUsersData();
+  }, []);
+  const { info, educationAndEmployment, guarantor } = userDetails || {};
   return (
     <div className={styles.container}>
       <div className={styles.details_cont}>

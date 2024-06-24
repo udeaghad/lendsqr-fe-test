@@ -1,16 +1,27 @@
 "use client";
-import { useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Rate, Divider } from "rsuite";
 
 import styles from "./user_profile.module.scss";
 import NumberFormatter from "@/shared/NumberFormatter";
-import { UsersContext } from "../../context/UsersContext";
+import { UsersDetailsProps } from "@/types";
 
 const UserProfileCard = () => {
-  const { userdetails } = useContext(UsersContext) || {};
+  const [userDetails, setUserDetails] = useState<UsersDetailsProps | null>(
+    null
+  );
 
-  const { info, educationAndEmployment } = userdetails || {};
+  const getUsersData = () => {
+    const getUserDetails = localStorage.getItem("userDetails");
+    if (getUserDetails) setUserDetails(JSON.parse(getUserDetails));
+  };
+
+  useEffect(() => {
+    getUsersData();
+  }, []);
+
+  const { info, educationAndEmployment } = userDetails || {};
 
   const [selectedTab, setSelectedTab] = useState("general-details");
 

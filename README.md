@@ -38,6 +38,13 @@ To get a local copy up and running follow these simple steps.
 - Run `npm run dev` to start the app in the browser.
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## Login
+- To login, use the following credentials,
+- Email: type any email of your choice
+- Password: type any password of your choice
+
+Note: The login data are not persisted, you can type any email and password to login.
+
 ## Run tests
 - Run `npm test` to run the tests.
 

@@ -7,10 +7,8 @@ import { Dropdown, Space, Pagination } from "antd";
 import styles from "./table.module.scss";
 import { OverviewTableProps } from "../../../types";
 import CustomDropDown from "../Dropdown/CustomDropDown";
-import { UsersContext } from "../../context/UsersContext";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
-  const { setUserDetails } = useContext(UsersContext) || {};
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -29,9 +27,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
 
   const handlePopupClick = (key: string, item: any) => {
     if (key === "1") {
-      if (setUserDetails) {
-        setUserDetails(item);
-      }
+     localStorage.setItem("userDetails", JSON.stringify(item));
       router.push(`/dashboard/users/${item?.id}`);
     }
   };
@@ -78,7 +74,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
     } else if (field === "reset") {
       setUserData(data);
       setSearchValue({ field: "", value: "" });
-      
+
     }
   };
 
