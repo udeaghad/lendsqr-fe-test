@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import Image from "next/image";
-import { Dropdown, Space, Pagination } from "antd";
+// import { HiOutlineDotsVertical } from "react-icons/hi";
+// import Image from "next/image";
+import { Pagination } from "antd";
 import styles from "./table.module.scss";
 import { OverviewTableProps } from "../../../types";
-import CustomDropDown from "../Dropdown/CustomDropDown";
+// import CustomDropDown from "../Dropdown/CustomDropDown";
+import DataTable from "./DataTable";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
   const router = useRouter();
@@ -87,7 +88,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   const handleReset = () => {
     console.log("reset");
     setUserData(data);
-  }
+  };
 
   useEffect(() => {
     console.log("currentdata", { userData });
@@ -99,6 +100,7 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   };
 
   const filterOptions = [
+    { label: "", value: "Select" },
     { label: "lendsqr", value: "lendsqr" },
     { label: "opay", value: "opay" },
     { label: "moniepoint", value: "moniepoint" },
@@ -115,171 +117,14 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   return (
     <div>
       <div className={styles.container}>
-        <table className={styles.table_container} data-testid="table">
-          <thead className={styles.table_heading} data-testid="table_header">
-            <tr>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  <div>Organization</div>
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  Username
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  Email
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  Phone Number
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  Date Joined
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead}>
-                <div className={styles.table_head}>
-                  Status
-                  <CustomDropDown
-                    options={filterOptions}
-                    handleSearch={handleSearch}
-                    handleFilterBtn={handleFilterBtn}
-                    handleReset={handleReset}
-                  />
-                </div>
-              </th>
-              <th className={styles.thead} />
-            </tr>
-          </thead>
-          <tbody className={styles.table_body} data-testid="table_body">
-            {currentData.map((item) => (
-              <tr key={item?.id}>
-                <td className={styles.table_row}>{item.info.org}</td>
-                <td className={styles.table_row}>{item.info.firstName}</td>
-                {/* <td className={`${styles.hide_table_head} ${styles.table_row}`}> */}
-                <td className={styles.table_row}>{item.info.email}</td>
-                <td className={styles.table_row}>{item.info.phoneNumber}</td>
-                <td className={styles.table_row}>{item.info.dateJoined}</td>
-                <td className={styles.table_row}>
-                  {item.info.status === "Active" ? (
-                    <span className={styles.active_status}>
-                      {item.info.status}
-                    </span>
-                  ) : item.info.status === "Inactive" ? (
-                    <span className={styles.inactive_status}>
-                      {item.info.status}
-                    </span>
-                  ) : item.info.status === "Pending" ? (
-                    <span className={styles.pending_status}>
-                      {item.info.status}
-                    </span>
-                  ) : item.info.status === "Blacklisted" ? (
-                    <span className={styles.blacklisted_status}>
-                      {item.info.status}
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </td>
-                <td className={styles.table_row} data-testid="more_icon">
-                  <Dropdown
-                    menu={{
-                      items: [
-                        {
-                          key: "1",
-                          label: (
-                            <div className={styles.popup_container}>
-                              <Image
-                                src="/assets/np_view_1214519_0000001.png"
-                                alt="view details"
-                                width={14}
-                                height={14}
-                              />
-                              <span>View Details</span>
-                            </div>
-                          ),
-                        },
-                        {
-                          key: "2",
-                          label: (
-                            <div className={styles.popup_container}>
-                              <Image
-                                src="/assets/np_delete-friend_3248001_0000001.png"
-                                alt="blacklist users"
-                                width={14}
-                                height={14}
-                              />
-                              <span>Blacklist User</span>
-                            </div>
-                          ),
-                        },
-                        {
-                          key: "3",
-                          label: (
-                            <div className={styles.popup_container}>
-                              <Image
-                                src="/assets/np_user_2995993_0000001.png"
-                                alt="activate users"
-                                width={14}
-                                height={14}
-                              />
-                              <span>Activate User</span>
-                            </div>
-                          ),
-                        },
-                      ],
-                      onClick: (e) => handlePopupClick(e.key, item),
-                    }}
-                    trigger={["click"]}
-                  >
-                    <Space>
-                      <HiOutlineDotsVertical
-                        size={14}
-                        style={{ cursor: "pointer" }}
-                      />
-                    </Space>
-                  </Dropdown>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <DataTable
+          filterOptions={filterOptions}
+          handleSearch={handleSearch}
+          handleFilterBtn={handleFilterBtn}
+          handleReset={handleReset}
+          currentData={currentData}
+          handlePopupClick={handlePopupClick}
+        />
       </div>
       <div className={styles.pagination_container}>
         <div className={styles.items_number}>

@@ -47,10 +47,8 @@ declare interface ClickPopupProps {
 }
 
 declare interface FilterDropDownProps {
-  options: { label: string; value: string }[];
+  options?: { label: string; value: string }[];
   handleSearch: (key: string, value?: string | string[]) => void;
-  // handleInputs: (key: string, value: string) => void;
-  // handleDate: (key: string, value: string | string[]) => void;
   leftPosition?: string;
   handleFilterBtn: () => void;
   handleReset: () => void;

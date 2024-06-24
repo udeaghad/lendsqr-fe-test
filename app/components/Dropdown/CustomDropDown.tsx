@@ -3,6 +3,7 @@ import { Dropdown, Space, Select, Input, DatePicker } from "antd";
 import { IoFilter } from "react-icons/io5";
 import styles from "./dropdown.module.scss";
 import { FilterDropDownProps } from "@/types";
+import { useState } from "react";
 
 const CustomDropDown = ({
   options,
@@ -11,6 +12,16 @@ const CustomDropDown = ({
   handleFilterBtn,
   handleReset,
 }: FilterDropDownProps) => {
+  const [selectField, setSelectField] = useState<
+    Record<string, string | string[]>
+  >({
+    organization: "",
+    username: "",
+    email: "",
+    date: "",
+    phone: "",
+    status: "",
+  });
   const handleDropDown = () => {
     const dropdown = document.querySelector(`.${styles.dropdown_container}`);
     if (dropdown) {
@@ -41,7 +52,6 @@ const CustomDropDown = ({
               placeholder={
                 <span
                   style={{
-                    textTransform: "capitalize",
                     fontWeight: "500",
                   }}
                 >
@@ -49,8 +59,15 @@ const CustomDropDown = ({
                 </span>
               }
               className={styles.select}
-              onChange={(value) => handleSearch("organization", value)}
+              onChange={(value) => {
+                handleSearch("organization", value);
+                setSelectField((prev) => ({
+                  ...prev,
+                  organization: value,
+                }));
+              }}
               options={options}
+              value={selectField.organization}
             />
           </Space>
         </div>
@@ -61,7 +78,14 @@ const CustomDropDown = ({
             <Input
               placeholder="User"
               className={styles.select}
-              onChange={(e) => handleSearch("username", e.target.value)}
+              onChange={(e) => {
+                handleSearch("username", e.target.value);
+                setSelectField((prev) => ({
+                  ...prev,
+                  username: e.target.value,
+                }));
+              }}
+              value={selectField.username}
             />
           </Space>
         </div>
@@ -72,7 +96,14 @@ const CustomDropDown = ({
             <Input
               placeholder="Email"
               className={styles.select}
-              onChange={(e) => handleSearch("email", e.target.value)}
+              onChange={(e) => {
+                handleSearch("email", e.target.value);
+                setSelectField((prev) => ({
+                  ...prev,
+                  email: e.target.value,
+                }));
+              }}
+              value={selectField.email}
             />
           </Space>
         </div>
@@ -82,8 +113,15 @@ const CustomDropDown = ({
           <Space>
             <DatePicker
               className={styles.select}
-              onChange={(date, dateString) => handleSearch("date", dateString)}
+              onChange={(date, dateString) => {
+                handleSearch("date", dateString);
+                // setSelectField((prev) => ({
+                //   ...prev,
+                //   date: dateString,
+                // }));
+              }}
               placeholder="Date"
+              // value={selectField.date}
             />
           </Space>
         </div>
@@ -94,7 +132,14 @@ const CustomDropDown = ({
             <Input
               placeholder="Phone Number"
               className={styles.select}
-              onChange={(e) => handleSearch("phone", e.target.value)}
+              onChange={(e) => {
+                handleSearch("phone", e.target.value);
+                setSelectField((prev) => ({
+                  ...prev,
+                  phone: e.target.value,
+                }));
+              }}
+              value={selectField.phone}
             />
           </Space>
         </div>
@@ -112,13 +157,20 @@ const CustomDropDown = ({
                 </span>
               }
               className={styles.select}
-              onChange={(value) => handleSearch("status", value)}
+              onChange={(value) => {
+                handleSearch("status", value);
+                setSelectField((prev) => ({
+                  ...prev,
+                  status: value,
+                }));
+              }}
               options={[
                 { label: "Active", value: "active" },
                 { label: "Inactive", value: "inactive" },
                 { label: "Pending", value: "pending" },
                 { label: "Blacklisted", value: "blacklisted" },
               ]}
+              value={selectField.status}
             />
           </Space>
         </div>
@@ -129,7 +181,14 @@ const CustomDropDown = ({
             type="button"
             onClick={() => {
               handleReset();
-              // handleCloseBtn();
+              setSelectField({
+                organization: "",
+                username: "",
+                email: "",
+                date: "",
+                phone: "",
+                status: "",
+              });
             }}
             data-testid="dropdown_reset"
           >
