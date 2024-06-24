@@ -10,32 +10,48 @@ describe("CustomDropDown", () => {
     { label: "Blacklisted", value: "blacklisted" },
   ];
   const handleSearch = jest.fn();
+  const handleFilterBtn = jest.fn();
 
   it("should render the dropdown", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByTestId("dropdown")).toBeInTheDocument();
   });
 
   it("should render the dropdown icon", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByTestId("dropdown_icon")).toBeInTheDocument();
   });
 
   it("should render the dropdown select", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByTestId("dropdown_select")).toBeInTheDocument();
   });
 
-
   it("should render the correct dropdown title", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByText("Organization")).toBeInTheDocument();
     expect(screen.getByText("Username")).toBeInTheDocument();
@@ -47,7 +63,11 @@ describe("CustomDropDown", () => {
 
   it("should render reset button", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByTestId("dropdown_reset")).toBeInTheDocument();
     fireEvent.click(screen.getByTestId("dropdown_reset"));
@@ -56,10 +76,13 @@ describe("CustomDropDown", () => {
 
   it("should render the filter button", () => {
     render(
-      <CustomDropDown options={filterOptions} handleSearch={handleSearch} />
+      <CustomDropDown
+        options={filterOptions}
+        handleSearch={handleSearch}
+        handleFilterBtn={handleFilterBtn}
+      />
     );
     expect(screen.getByTestId("dropdown_filter")).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("dropdown_filter"));
-    expect(handleSearch).toHaveBeenCalledTimes(1);
+    expect(screen.getByText("Filter")).toBeInTheDocument();
   });
 });

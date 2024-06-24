@@ -8,7 +8,7 @@ const workSans = Work_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Lendsqr",
-  description: "Empowering the smartest lenders",
+  description: "Empowering the smartest financial decisions",
   icons: "/assets/logo1.png",
 };
 

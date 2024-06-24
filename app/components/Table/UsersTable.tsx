@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Image from "next/image";
