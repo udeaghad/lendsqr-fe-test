@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-// import { HiOutlineDotsVertical } from "react-icons/hi";
-// import Image from "next/image";
+
 import { Pagination } from "antd";
 import styles from "./table.module.scss";
 import { OverviewTableProps } from "../../../types";
-// import CustomDropDown from "../Dropdown/CustomDropDown";
+
 import DataTable from "./DataTable";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
@@ -34,7 +33,6 @@ const UsersTable = ({ data }: OverviewTableProps) => {
   };
 
   const filterData = () => {
-    console.log({ searchValue });
     const { field, value } = searchValue;
     if (field === "") {
       return;
@@ -42,9 +40,8 @@ const UsersTable = ({ data }: OverviewTableProps) => {
       const filteredData = userData.filter((item) =>
         item.info.org.toLowerCase().includes(value.toLowerCase())
       );
-      console.log("hi", filteredData);
+
       setUserData(filteredData);
-      console.log("hi2", filteredData);
     } else if (field === "username") {
       const filteredData = userData.filter((item) => {
         return (
@@ -74,28 +71,20 @@ const UsersTable = ({ data }: OverviewTableProps) => {
       );
       setUserData(filteredData);
     } else if (field === "reset") {
-      console.log("reset");
       setUserData(data);
       setSearchValue({ field: "", value: "" });
     }
   };
 
   const handleFilterBtn = () => {
-    console.log("filter");
     filterData();
   };
 
   const handleReset = () => {
-    console.log("reset");
     setUserData(data);
   };
 
-  useEffect(() => {
-    console.log("currentdata", { userData });
-  }, [userData]);
-
   const handleSearch = (key: string, value?: string | string[]) => {
-    console.log("search", { key }, { value });
     setSearchValue({ field: key, value: value as string });
   };
 

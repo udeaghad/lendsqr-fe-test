@@ -22,7 +22,6 @@ const LoginForm = () => {
   };
 
   const onSubmit: SubmitHandler<LoginData> = (data) => {
-    console.log(data);
     localStorage.setItem("user", JSON.stringify({ userEmail: data.email }));
     router.push("/dashboard/users");
   };

@@ -36,15 +36,12 @@ const CustomDropDown = ({
     }
   };
 
-  useEffect(
-    ClickOutSide({
-      listening,
-      menuRef,
-      setListening,
-      setIsOpen,
-    }),
-    [listening, menuRef, setListening, setIsOpen]
-  );
+  ClickOutSide({
+    listening,
+    menuRef,
+    setListening,
+    setIsOpen,
+  });
 
   // const handleCloseBtn = () => {
   //   const dropdown = document.querySelector(`.${styles.dropdown_container}`);

@@ -55,7 +55,7 @@ const UserProfileCard = () => {
           <Divider vertical className={styles.pipe_after_name} />
 
           <div className={styles.tier_cont}>
-            <div>User's Tier</div>
+            <div>User&apos;s Tier</div>
             <div className={styles.tier_star}>
               <Rate
                 disabled
