@@ -7,57 +7,89 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import LoginForm, { Form } from "../../app/components/LoginForm/LoginForm";
+import { Form } from "../../app/components/LoginForm/LoginForm";
 // import { FieldError, useForm } from 'react-hook-form';
 // import { LoginFormProps } from "../../types";
 
 describe("LoginForm", () => {
-  it("should render the login form", () => {
-    render(<LoginForm />);
-    expect(screen.getByTestId("login_form")).toBeInTheDocument();
-  });
 
-  it("should render the email input", () => {
-    render(<LoginForm />);
-    expect(screen.getByTestId("email_input")).toBeInTheDocument();
-  });
-
-  it("should render the password input", () => {
-    render(<LoginForm />);
-    expect(screen.getByTestId("password_input")).toBeInTheDocument();
-  });
-
-  it("should render the login button", () => {
-    render(<LoginForm />);
-    expect(screen.getByTestId("login_button")).toBeInTheDocument();
-  });
-
-  it("should render the text 'FORGOT PASSWORD?'", () => {
-    render(<LoginForm />);
-    expect(screen.getByText("FORGOT PASSWORD?")).toBeInTheDocument();
-  });
-
-  it("should render the show button", () => {
-    render(<LoginForm />);
-    expect(screen.getByTestId("show_button")).toBeInTheDocument();
-  });
-
-  it("should render the text 'Welcome!'", () => {
-    render(<LoginForm />);
-    const welcomeText = screen.getByText("Welcome!");
-    expect(welcomeText).toBeInTheDocument();
-    expect(welcomeText.innerHTML).toContain("!");
-  });
-
-  it("should render the text 'Enter details to login.'", () => {
-    render(<LoginForm />);
-    expect(screen.getByText("Enter details to login.")).toBeInTheDocument();
-  });
-
-  describe("Form", () => {
     let isPasswordVisible = false;
     const onSubmit = jest.fn();
     const togglePasswordVisibility = jest.fn();
+
+    it("should render the login form", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByTestId("login_form")).toBeInTheDocument();
+    });
+  
+    it("should render the email input", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByTestId("email_input")).toBeInTheDocument();
+    });
+  
+    it("should render the password input", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByTestId("password_input")).toBeInTheDocument();
+    });
+  
+    it("should render the login button", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByTestId("login_button")).toBeInTheDocument();
+    });
+  
+    it("should render the text 'FORGOT PASSWORD?'", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByText("FORGOT PASSWORD?")).toBeInTheDocument();
+    });
+  
+    it("should render the show button", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByTestId("show_button")).toBeInTheDocument();
+    });
+  
+    it("should render the text 'Welcome!'", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      const welcomeText = screen.getByText("Welcome!");
+      expect(welcomeText).toBeInTheDocument();
+      expect(welcomeText.innerHTML).toContain("!");
+    });
+  
+    it("should render the text 'Enter details to login.'", () => {
+      render(<Form
+          isPasswordVisible={isPasswordVisible}
+          onSubmit={onSubmit}
+          togglePasswordVisibility={togglePasswordVisibility}
+        />);
+      expect(screen.getByText("Enter details to login.")).toBeInTheDocument();
+    });
 
     it("should not submit form if email is invalid", () => {
       render(
@@ -172,29 +204,5 @@ describe("LoginForm", () => {
 
       expect(screen.queryByTestId("error-email")).not.toBeTruthy();
     });
-
-    // it("should displays validation error for invalid email", async () => {
-    //   render(
-    //     <Form
-    //       isPasswordVisible={isPasswordVisible}
-    //       onSubmit={onSubmit}
-    //       togglePasswordVisibility={togglePasswordVisibility}
-    //     />
-    //   );
-    //   const emailInput = screen.getByTestId("email_input");
-    //   const passwordInput = screen.getByTestId("password_input");
-
-    //   fireEvent.change(emailInput, { target: { value: "testexample.com" } });
-    //   fireEvent.change(passwordInput, { target: { value: "Password@123!" } });
-
-    //   const submitButton = screen.getByTestId("login_button");
-    //   await act(() => {
-    //     fireEvent.click(submitButton);
-    //   });
-
-    //   await waitFor(() => {
-    //     expect(screen.queryByTestId("error-email")).toBeInTheDocument();
-    //   });
-    // });
   });
-});
+

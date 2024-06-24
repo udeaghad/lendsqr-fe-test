@@ -213,6 +213,7 @@ const CustomDropDown = ({
             type="button"
             onClick={() => {
               handleFilterBtn();
+              handleDropDown();
             }}
             data-testid="dropdown_filter"
           >
