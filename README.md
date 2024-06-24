@@ -6,7 +6,7 @@
 This application a dashboard for Lendsqr, a financial technology company that provides financial services to small and medium-sized enterprises. The dashboard provides a visual representation of the company's users data, which helps the company make data-driven decisions. 
 
 ## Project Documentation 📄
-- [Live](https://planawaywifi.netlify.app/)
+- [Live](https://dozie-udeagha-lendsqr-fe-test.vercel.app//)
 - [Design Instruction](https://docs.google.com/document/d/e/2PACX-1vQ5YKfvm86OxmpiboMOpLO1V7RmKNYJX87W9zWME6Y647gywVHVEayaMRznCc6vLO95mPKD5WunVSi2/pub)
 
 ## Team members

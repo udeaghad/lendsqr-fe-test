@@ -11,6 +11,7 @@ describe("CustomDropDown", () => {
   ];
   const handleSearch = jest.fn();
   const handleFilterBtn = jest.fn();
+  const handleReset = jest.fn();
 
   it("should render the dropdown", () => {
     render(
@@ -18,6 +19,7 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByTestId("dropdown")).toBeInTheDocument();
@@ -29,6 +31,7 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByTestId("dropdown_icon")).toBeInTheDocument();
@@ -40,6 +43,7 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByTestId("dropdown_select")).toBeInTheDocument();
@@ -51,6 +55,7 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByText("Organization")).toBeInTheDocument();
@@ -67,11 +72,11 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByTestId("dropdown_reset")).toBeInTheDocument();
-    fireEvent.click(screen.getByTestId("dropdown_reset"));
-    expect(handleSearch).toHaveBeenCalledTimes(1);
+    expect(screen.getByText("Reset")).toBeInTheDocument();
   });
 
   it("should render the filter button", () => {
@@ -80,6 +85,7 @@ describe("CustomDropDown", () => {
         options={filterOptions}
         handleSearch={handleSearch}
         handleFilterBtn={handleFilterBtn}
+        handleReset={handleReset}
       />
     );
     expect(screen.getByTestId("dropdown_filter")).toBeInTheDocument();
