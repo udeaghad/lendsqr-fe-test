@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
@@ -11,11 +11,13 @@ const LoginForm = () => {
   const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
-  const isLoggedIn = localStorage.getItem("user");
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("user");
 
-  if (isLoggedIn) {
-    router.push("/dashboard/users");
-  }
+    if (isLoggedIn) {
+      router.push("/dashboard/users");
+    }
+  }, []);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
