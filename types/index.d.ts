@@ -110,6 +110,20 @@ declare interface UsersContextProps {
   setUserDetails: (details: UsersDetailsProps) => void;
 }
 
+declare interface ClickOutSideProps {
+  listening: boolean;
+  menuRef: React.RefObject<HTMLDivElement>;
+  setListening: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+declare interface DataTableProps extends FilterDropDownProps {
+  currentData: OverviewTableProps["data"];
+  handlePopupClick: (key: string, item: any) => void;
+  filterOptions: { label: string; value: string }[];
+}
+
+
 export type {
   LoginData,
   LoginFormProps,
@@ -123,4 +137,6 @@ export type {
   UsersDetailsProps,
   UsersContextProps,
   ChildrenProps,
+  ClickOutSideProps,
+  DataTableProps,
 };

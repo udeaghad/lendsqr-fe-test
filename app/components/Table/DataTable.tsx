@@ -5,14 +5,8 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import Image from "next/image";
 import { Dropdown, Space } from "antd";
 import styles from "./table.module.scss";
-import { FilterDropDownProps, OverviewTableProps } from "../../../types";
+import { DataTableProps } from "../../../types";
 import CustomDropDown from "../Dropdown/CustomDropDown";
-
-interface DataTableProps extends FilterDropDownProps {
-  currentData: OverviewTableProps["data"];
-  handlePopupClick: (key: string, item: any) => void;
-  filterOptions: { label: string; value: string }[];
-}
 
 const DataTable = ({
   filterOptions,

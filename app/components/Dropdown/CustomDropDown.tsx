@@ -1,9 +1,10 @@
 "use client";
-import { Dropdown, Space, Select, Input, DatePicker } from "antd";
+import { useEffect, useRef, useState } from "react";
+import { Space, Select, Input, DatePicker } from "antd";
 import { IoFilter } from "react-icons/io5";
 import styles from "./dropdown.module.scss";
 import { FilterDropDownProps } from "@/types";
-import { useState } from "react";
+import ClickOutSide from "@/shared/ClickOutSide";
 
 const CustomDropDown = ({
   options,
@@ -22,12 +23,28 @@ const CustomDropDown = ({
     phone: "",
     status: "",
   });
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [listening, setListening] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const toggle = () => setIsOpen(!isOpen);
+
   const handleDropDown = () => {
     const dropdown = document.querySelector(`.${styles.dropdown_container}`);
     if (dropdown) {
       dropdown.classList.toggle(styles.show);
     }
   };
+
+  useEffect(
+    ClickOutSide({
+      listening,
+      menuRef,
+      setListening,
+      setIsOpen,
+    }),
+    [listening, menuRef, setListening, setIsOpen]
+  );
 
   // const handleCloseBtn = () => {
   //   const dropdown = document.querySelector(`.${styles.dropdown_container}`);
@@ -36,7 +53,7 @@ const CustomDropDown = ({
   //   }
   // };
   return (
-    <div data-testid="dropdown">
+    <div data-testid="dropdown" ref={menuRef} onClick={toggle}>
       <div data-testid="dropdown_icon">
         <IoFilter
           size={12}
