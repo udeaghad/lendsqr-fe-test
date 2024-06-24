@@ -1,4 +1,3 @@
-'use client';
 import styles from "../dashboard.module.scss";
 import OverviewCard from "@/app/components/OverviewCard/OverviewCard";
 import UsersTable from "@/app/components/Table/UsersTable"; 
