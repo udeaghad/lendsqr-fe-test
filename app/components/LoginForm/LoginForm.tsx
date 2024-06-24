@@ -11,14 +11,6 @@ const LoginForm = () => {
   const router = useRouter();
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("user");
-
-    if (isLoggedIn) {
-      router.push("/dashboard/users");
-    }
-  }, []);
-
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prev) => !prev);
   };
