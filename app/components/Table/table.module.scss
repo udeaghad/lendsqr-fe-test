@@ -96,39 +96,3 @@
   font-family: $text-work-sans;
   color: $dark-text-color;
 }
-
-.pagination_container {
-  @include flex-col;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0 10px 5px;
-  @include media(tablet) {
-    @include flex-row;
-    width: 95%;
-  }
-  @include media(desktop) {
-    // left: -240px;
-    width: 70vw;
-    @include flex-row;
-  }
-}
-
-.items_number {
-  @include flex-row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-}
-
-.select_paginate_size {
-  width: 70px;
-  height: 30px;
-  border: 1px solid #f0f0f0;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 14px;
-  color: $dark-text-color;
-}

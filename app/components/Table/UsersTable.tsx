@@ -7,6 +7,7 @@ import styles from "./table.module.scss";
 import { OverviewTableProps } from "../../../types";
 
 import DataTable from "./DataTable";
+import TablePagination from "../Pagination/Pagination";
 
 const UsersTable = ({ data }: OverviewTableProps) => {
   const router = useRouter();
@@ -115,36 +116,14 @@ const UsersTable = ({ data }: OverviewTableProps) => {
           handlePopupClick={handlePopupClick}
         />
       </div>
-      <div className={styles.pagination_container}>
-        <div className={styles.items_number}>
-          <div>Showing</div>
-          <div>
-            <select
-              name="pages"
-              id="pages"
-              onChange={(e) => setPageSize(Number(e.target.value))}
-              value={pageSize}
-              className={styles.select_paginate_size}
-            >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="70">70</option>
-              <option value="100">100</option>
-            </select>
-          </div>
-          <div>
-            <span>out of {userData.length}</span>
-          </div>
-        </div>
-        <Pagination
-          total={userData.length}
-          showSizeChanger={false}
-          current={currentPage}
+
+      <div>
+        <TablePagination
           pageSize={pageSize}
-          onChange={(page, pageSize) => {
-            handlePaginateSize(page, pageSize);
-          }}
+          setPageSize={setPageSize}
+          userData={userData}
+          handlePaginateSize={handlePaginateSize}
+          currentPage={currentPage}
         />
       </div>
     </div>

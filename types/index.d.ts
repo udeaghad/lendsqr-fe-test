@@ -123,6 +123,14 @@ declare interface DataTableProps extends FilterDropDownProps {
   filterOptions: { label: string; value: string }[];
 }
 
+declare interface TablePaginationProps {
+  pageSize: number;
+  setPageSize: React.Dispatch<React.SetStateAction<number>>;
+  userData: OverviewTableProps["data"];
+  handlePaginateSize: (page: number, pageSize: number) => void;
+  currentPage: number;
+}
+
 
 export type {
   LoginData,
@@ -139,4 +147,5 @@ export type {
   ChildrenProps,
   ClickOutSideProps,
   DataTableProps,
+  TablePaginationProps,
 };
