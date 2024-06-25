@@ -1,12 +1,11 @@
-
-![image](https://github.com/udeaghad/PlanAway/assets/88520952/9c4d66cd-7d1b-4c37-b5ce-8796a18cde49)
-
+![desktop_users_with_dropdown and popup](https://github.com/udeaghad/lendsqr-fe-test/assets/88520952/e0c4ff44-b879-4985-8252-2faa7ceb598f)
 
 ## Lendsqr Dashboard 🏩
 This application a dashboard for Lendsqr, a financial technology company that provides financial services to small and medium-sized enterprises. The dashboard provides a visual representation of the company's users data, which helps the company make data-driven decisions. 
 
 ## Project Documentation 📄
 - [Live](https://dozie-udeagha-lendsqr-fe-test.vercel.app//)
+
 - [Design Instruction](https://docs.google.com/document/d/e/2PACX-1vQ5YKfvm86OxmpiboMOpLO1V7RmKNYJX87W9zWME6Y647gywVHVEayaMRznCc6vLO95mPKD5WunVSi2/pub)
 
 ## Team members
